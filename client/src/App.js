@@ -1,9 +1,12 @@
 import "./App.css";
+import Navbar from "./components/Navbar/Navbar";
+import ProductsScreen from "./screens/ProductsScreen/ProductsScreen";
 
 function App() {
   return (
     <div className="app">
-      <h1>React</h1>
+      <Navbar />
+      <ProductsScreen />
     </div>
   );
 }
