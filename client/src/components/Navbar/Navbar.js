@@ -35,6 +35,7 @@ function Navbar() {
               type="text"
               className={showSearchLine ? "active-search-line" : ""}
               onChange={(e) => searchValueHandle(e.target.value)}
+              placeholder="Search..."
             />
             <SearchIcon style={{ color: "white" }} />
           </div>
