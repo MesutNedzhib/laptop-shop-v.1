@@ -26,7 +26,7 @@ function Navbar() {
     <div className="navbar">
       <div className="navbar-container">
         <div className="navbar-left-side">
-          <span>PRODUCTS</span>
+          <span onClick={() => history.push("/products")}>PRODUCTS</span>
           <MenuIcon />
         </div>
         <div onClick={() => history.push("/")} className="navbar-center-side">

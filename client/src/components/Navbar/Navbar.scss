@@ -22,6 +22,9 @@
   color: white; //
 }
 .navbar-left-side {
+  span {
+    cursor: pointer;
+  }
   svg {
     color: white;
     margin-left: 20px;

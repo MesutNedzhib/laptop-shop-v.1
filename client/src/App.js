@@ -9,10 +9,10 @@ function App() {
   return (
     <div className="app">
       <Navbar />
-      {/* <Route exact path="/" component={ProductsScreen} /> */}
+      <Route exact path="/" component={HomeScreen} />
+      <Route exact path="/products" component={ProductsScreen} />
       <Route path="/cart" component={CartScreen} />
       {/* <ProductDetailsScreen /> */}
-      <HomeScreen />
     </div>
   );
 }

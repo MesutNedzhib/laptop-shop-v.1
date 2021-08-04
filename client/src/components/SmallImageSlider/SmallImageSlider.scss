@@ -1,0 +1,18 @@
+.smallImageSlider-container {
+  transition: 0.4s;
+  cursor: pointer;
+  width: 100%;
+  margin: auto;
+  height: auto;
+
+  &:hover {
+    opacity: 0.8;
+  }
+  .carousel.carousel-slider {
+    border-radius: 10px;
+  }
+  .carousel .slider-wrapper.axis-horizontal .slider .slide img {
+    height: 100%;
+    object-fit: cover;
+  }
+}

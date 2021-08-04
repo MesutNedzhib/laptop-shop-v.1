@@ -69,6 +69,7 @@
   width: 100%;
   justify-content: space-between;
   background-color: #4e88cf;
+  background-color: #18293ce8;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   color: #ffffff;
@@ -85,6 +86,7 @@
     align-items: center;
     cursor: pointer;
     background-color: #4e88cf;
+    background-color: transparent;
     flex: 0.4;
     color: white;
     border-bottom-right-radius: 10px;
@@ -92,6 +94,7 @@
 
     &:hover {
       background-color: #295a96;
+      background-color: #0d1927e8;
       color: greenyellow;
     }
   }
