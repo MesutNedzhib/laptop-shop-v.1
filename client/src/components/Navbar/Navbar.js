@@ -8,9 +8,10 @@ import SearchIcon from "@material-ui/icons/Search";
 import Badge from "@material-ui/core/Badge";
 import MenuIcon from "@material-ui/icons/Menu";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Navbar() {
+  const history = useHistory();
   const [showSearchLine, setShowSearchLine] = useState(false);
 
   const searchValueHandle = (value) => {
@@ -28,7 +29,9 @@ function Navbar() {
           <span>PRODUCTS</span>
           <MenuIcon />
         </div>
-        <div className="navbar-center-side">LAPTOP SHOP</div>
+        <div onClick={() => history.push("/")} className="navbar-center-side">
+          LAPTOP SHOP
+        </div>
         <div className="navbar-right-side">
           <div className="navbar-search">
             <input
