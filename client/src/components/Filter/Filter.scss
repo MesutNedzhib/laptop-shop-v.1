@@ -4,22 +4,28 @@
   background-color: white;
   box-shadow: 0 1px 5px #e5e5e5;
   border-radius: 10px;
+  z-index: 5;
 
   .filter-header {
     // background-color: rgb(221, 221, 221);
     background-color: white;
+    background-color: #18293ce8;
+    color: #f159e5;
+    color: white;
     border-bottom: 1px solid rgb(173, 173, 173);
-    // border-bottom-right-radius: 10px;
-    // border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     cursor: pointer;
+    width: 100%;
 
     h3 {
       margin: 0;
       text-align: center;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       padding-top: 5px;
+      font-size: 16px;
     }
   }
 
@@ -69,6 +75,16 @@
   }
 
   @media (max-width: 480px) {
+    width: 80%;
+    margin: auto;
+    box-shadow: none;
+    margin-bottom: 10px;
+
+    .filter-header {
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
     display: none;
   }
 }

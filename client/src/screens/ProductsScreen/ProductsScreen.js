@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Filter from "../../components/Filter/Filter";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import "./ProductsScreen.scss";
 
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 function ProductsScreen() {
+  const [filterContentActive, setFilterContentActive] = useState(false);
+
+  const changeFilterContentActiveState = () => {
+    setFilterContentActive(!filterContentActive);
+  };
   return (
     <div className="productsScreen">
       <div className="productScreen-container">
@@ -12,6 +19,33 @@ function ProductsScreen() {
           <Filter show={true} />
         </div>
         <div className="productScreen-right-side">
+          <div className="productOptions">
+            <div
+              onClick={() => changeFilterContentActiveState()}
+              className="productOption-filter"
+            >
+              <h4>Filters</h4>
+              <span>Filters</span>
+            </div>
+            <div className="productOption-sort">
+              <h4>Sort by</h4>
+              <span>value</span>
+            </div>
+          </div>
+          <div
+            className={`productOption-filter-content ${
+              filterContentActive ? "f-c-active" : ""
+            } `}
+          >
+            <div className="productOption-filters-container">
+              <div className="productOption-filters-container-header">
+                <ArrowBackIcon
+                  onClick={() => changeFilterContentActiveState()}
+                />
+              </div>
+              <h3 id="filters">FILTERS</h3>
+            </div>
+          </div>
           <div className="productCards-container">
             <ProductCard />
             <ProductCard />

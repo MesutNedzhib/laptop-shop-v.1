@@ -7,12 +7,19 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import SearchIcon from "@material-ui/icons/Search";
 import Badge from "@material-ui/core/Badge";
 import MenuIcon from "@material-ui/icons/Menu";
+import LaptopMacIcon from "@material-ui/icons/LaptopMac";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 import { Link, useHistory } from "react-router-dom";
 
 function Navbar() {
   const history = useHistory();
   const [showSearchLine, setShowSearchLine] = useState(false);
+  const [menuContentActive, setMenuContentActive] = useState(false);
+
+  const changeMenuContentActiveState = () => {
+    setMenuContentActive(!menuContentActive);
+  };
 
   const searchValueHandle = (value) => {
     if (value) {
@@ -27,11 +34,26 @@ function Navbar() {
       <div className="navbar-container">
         <div className="navbar-left-side">
           <span onClick={() => history.push("/products")}>PRODUCTS</span>
-          <MenuIcon />
+          <MenuIcon onClick={() => changeMenuContentActiveState()} />
+          <div
+            className={`menu-content ${menuContentActive ? "m-c-active" : ""} `}
+          >
+            <div className="menu-content-container">
+              <div
+                onClick={() => history.push("/products")}
+                className="menu-content-row"
+              >
+                <LaptopMacIcon />
+                <h4>Products</h4>
+                <ChevronRightIcon />
+              </div>
+            </div>
+          </div>
         </div>
         <div onClick={() => history.push("/")} className="navbar-center-side">
           LAPTOP SHOP
         </div>
+
         <div className="navbar-right-side">
           <div className="navbar-search">
             <input
