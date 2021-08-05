@@ -31,6 +31,7 @@
   display: grid;
   grid-template-columns: 215px 215px 215px 215px;
   grid-column-gap: 10px;
+  grid-row-gap: 10px;
 
   @media (max-width: 1024px) {
     grid-template-columns: 215px 215px 215px;
@@ -118,7 +119,7 @@
     text-align: center;
     padding: 3px 0;
     padding-bottom: 5px;
-    margin-left: auto;
+    // margin-left: auto;
 
     h4 {
       margin: 0;
