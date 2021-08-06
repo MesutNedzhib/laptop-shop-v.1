@@ -162,7 +162,7 @@
       text-align: right;
       padding: 5px 0;
       color: white;
-      padding-top: 2px;
+      padding-top: 4px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -185,7 +185,6 @@
       font-weight: 500;
       margin: 0;
       margin-left: 20px;
-      margin-bottom: 3px;
       font-size: 22px;
       display: inline-block;
       // border-top: 1px solid #18293c;
@@ -204,6 +203,6 @@
 }
 .f-c-active {
   transition: 0.3s;
-  width: 80%;
+  width: 70%;
   // border-right: 1px solid #f159e5;
 }
