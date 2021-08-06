@@ -87,6 +87,7 @@ function Navbar() {
           </div>
         </div>
         <div onClick={() => history.push("/")} className="navbar-center-side">
+          {/* <div className="gif-container"></div> */}
           LAPTOP SHOP
         </div>
 
