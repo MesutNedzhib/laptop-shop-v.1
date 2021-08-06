@@ -6,7 +6,9 @@ import "./ProductsScreen.scss";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import MobileFilter from "../../components/MobileFilter/MobileFilter";
+import { useHistory } from "react-router-dom";
 function ProductsScreen() {
+  const history = useHistory();
   const [filterContentActive, setFilterContentActive] = useState(false);
 
   const changeFilterContentActiveState = () => {
@@ -55,7 +57,7 @@ function ProductsScreen() {
             </div>
           </div>
           <div className="productCards-container">
-            <ProductCard />
+            <ProductCard  />
             <ProductCard />
             <ProductCard />
             <ProductCard />

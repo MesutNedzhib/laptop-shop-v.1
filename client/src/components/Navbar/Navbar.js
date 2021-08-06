@@ -10,6 +10,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import LaptopMacIcon from "@material-ui/icons/LaptopMac";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import CloseIcon from "@material-ui/icons/Close";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
 import { Link, useHistory } from "react-router-dom";
 
@@ -17,9 +19,15 @@ function Navbar() {
   const history = useHistory();
   const [showSearchLine, setShowSearchLine] = useState(false);
   const [menuContentActive, setMenuContentActive] = useState(false);
+  const [menuContentAccountActive, setMenuContentAccountActive] =
+    useState(false);
 
   const changeMenuContentActiveState = () => {
     setMenuContentActive(!menuContentActive);
+  };
+
+  const changeMenuContentAccountActiveState = () => {
+    setMenuContentAccountActive(!menuContentAccountActive);
   };
 
   const searchValueHandle = (value) => {
@@ -45,6 +53,28 @@ function Navbar() {
             className={`menu-content ${menuContentActive ? "m-c-active" : ""} `}
           >
             <div className="menu-content-container">
+              <div
+                onClick={() => changeMenuContentAccountActiveState()}
+                className="menu-content-account"
+              >
+                <div className="menu-content-account-header">
+                  <AccountCircleIcon />
+                  <h4>John Conner</h4>
+                </div>
+                {menuContentAccountActive ? (
+                  <ExpandLessIcon />
+                ) : (
+                  <ExpandMoreIcon />
+                )}
+              </div>
+              <div
+                className={`menu-content-account-body ${
+                  menuContentAccountActive ? "m-c-a-b-active" : ""
+                } `}
+              >
+                <h4>Login</h4>
+                <h4>Logout</h4>
+              </div>
               <div
                 onClick={() => history.push("/products")}
                 className="menu-content-row"

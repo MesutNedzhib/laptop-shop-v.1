@@ -48,12 +48,14 @@
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     // margin: auto;
+    margin-top: 56px;
   }
 }
 
 .productOptions {
   // background-color: white;
   // box-shadow: 0 1px 5px #e5e5e5;
+  margin-top: -2px;
   border-radius: 10px;
   margin-bottom: 0px;
   width: 100%;
@@ -67,6 +69,8 @@
     // justify-content: center;
     background-color: white;
     padding: 10px 0px;
+    position: fixed;
+    border-radius: 0;
   }
 
   .productOption-filter {

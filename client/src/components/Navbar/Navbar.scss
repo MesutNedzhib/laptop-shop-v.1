@@ -48,16 +48,69 @@
   .menu-content {
     position: fixed;
     overflow: hidden;
-    margin-top: 11px;
+    margin-top: 10px;
     color: black;
     width: 0;
     height: 100vh;
     background-color: white;
-    padding: 10px 0;
+    // padding: 10px 0;
     transition: 0.3s;
 
     .menu-content-container {
+      border-top: 1px solid #f159e5;
+      .menu-content-account {
+        background: #18293c;
+        padding: 5px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid gray;
+        height: 31px;
+
+        .menu-content-account-header {
+          display: flex;
+          align-items: center;
+          width: 100%;
+
+          h4 {
+            margin: 0;
+            color: white;
+            margin-left: 10px;
+            // height: 22px;
+            width: 100%;
+          }
+        }
+        svg {
+          width: 30px;
+          height: 30px;
+          &:last-child {
+            margin-right: 10px;
+          }
+        }
+      }
+
+      .menu-content-account-body {
+        height: 0;
+        // background-color: #e6e6e6;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        transition: 0.4s;
+
+        h4 {
+          margin: 0;
+          font-weight: 500;
+        }
+      }
+
+      .m-c-a-b-active {
+        transition: 0.4s;
+        height: 45px;
+        padding: 5px 20px;
+        border-bottom: 1px solid #e6e6e6;
+      }
+
       .menu-content-row {
+        margin-top: 10px;
         display: flex;
         align-items: center;
         svg {

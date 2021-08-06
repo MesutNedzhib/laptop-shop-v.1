@@ -2,13 +2,16 @@ import React from "react";
 import "./ProductCard.scss";
 import CheckSharpIcon from "@material-ui/icons/CheckSharp";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import { useHistory } from "react-router-dom";
 
 function ProductCard() {
+  const history = useHistory();
   return (
     <div className="productCard">
       <div className="productCard-container">
         <div className="productCard-image">
           <img
+            onClick={() => history.push("/product-details")}
             src="https://laptop.bg/system/images/248254/normal/ROG_STRIX_G15_G512.jpg"
             alt=""
           />
