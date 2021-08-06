@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./MobileFilter.scss";
 
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
 function MobileFilter({ show }) {
   const [activeFilterBody, setActiveFilterBody] = useState(show);
   const changeActiveFilterState = () => {
@@ -14,6 +17,7 @@ function MobileFilter({ show }) {
           className="mobileFilter-header"
         >
           <h3>Brand</h3>
+          {activeFilterBody ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </div>
         <div
           className={`mobileFilter-body ${activeFilterBody ? "mf-active" : ""}`}
