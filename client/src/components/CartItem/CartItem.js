@@ -41,7 +41,7 @@ function CartItem() {
           <CancelSharpIcon />
         </div>
         <div className="cartItem-price">
-          <span>2199.99</span>
+          <span>$ 2199.99</span>
         </div>
       </div>
     </div>
