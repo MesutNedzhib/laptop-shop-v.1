@@ -1,7 +1,7 @@
 .mobileFilter-container {
   width: 100%;
   margin-bottom: 10px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   box-shadow: 0 1px 5px #e5e5e5;
   border-radius: 10px;
   z-index: 5;
@@ -14,10 +14,10 @@
     color: #f159e5;
     color: white;
     border-bottom: 1px solid rgb(173, 173, 173);
-    // border-bottom-right-radius: 10px;
-    // border-bottom-left-radius: 10px;
-    // border-top-left-radius: 10px;
-    // border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     cursor: pointer;
     width: 100%;
 
