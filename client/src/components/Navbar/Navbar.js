@@ -9,6 +9,7 @@ import Badge from "@material-ui/core/Badge";
 import MenuIcon from "@material-ui/icons/Menu";
 import LaptopMacIcon from "@material-ui/icons/LaptopMac";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import CloseIcon from "@material-ui/icons/Close";
 
 import { Link, useHistory } from "react-router-dom";
 
@@ -34,7 +35,12 @@ function Navbar() {
       <div className="navbar-container">
         <div className="navbar-left-side">
           <span onClick={() => history.push("/products")}>PRODUCTS</span>
-          <MenuIcon onClick={() => changeMenuContentActiveState()} />
+          {menuContentActive ? (
+            <CloseIcon onClick={() => changeMenuContentActiveState()} />
+          ) : (
+            <MenuIcon onClick={() => changeMenuContentActiveState()} />
+          )}
+
           <div
             className={`menu-content ${menuContentActive ? "m-c-active" : ""} `}
           >

@@ -5,6 +5,7 @@ import "./ProductsScreen.scss";
 
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import MobileFilter from "../../components/MobileFilter/MobileFilter";
 function ProductsScreen() {
   const [filterContentActive, setFilterContentActive] = useState(false);
 
@@ -39,11 +40,18 @@ function ProductsScreen() {
           >
             <div className="productOption-filters-container">
               <div className="productOption-filters-container-header">
+                <h3 id="filters">FILTERS</h3>
                 <ArrowBackIcon
                   onClick={() => changeFilterContentActiveState()}
                 />
               </div>
-              <h3 id="filters">FILTERS</h3>
+              <div className="productOption-filters-container-body">
+                <MobileFilter show={false} />
+                <MobileFilter show={false} />
+                <MobileFilter show={false} />
+                <MobileFilter show={false} />
+                <MobileFilter show={false} />
+              </div>
             </div>
           </div>
           <div className="productCards-container">
