@@ -14,7 +14,6 @@ const countDublicatedItems = (data) => {
     newArray.push({
       name: prop,
       count: counts[prop],
-      // isChecked: false,
     });
   }
   return newArray;
