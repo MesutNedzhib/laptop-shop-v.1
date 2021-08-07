@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Filter.scss";
 
-function Filter({ show }) {
+function Filter({ show, name, data }) {
   const [activeFilterBody, setActiveFilterBody] = useState(show);
   const changeActiveFilterState = () => {
     setActiveFilterBody(!activeFilterBody);
@@ -13,16 +13,18 @@ function Filter({ show }) {
           onClick={() => changeActiveFilterState()}
           className="filter-header"
         >
-          <h3>Brand</h3>
+          <h3>{name}</h3>
         </div>
         <div className={`filter-body ${activeFilterBody ? "f-active" : ""}`}>
           <ul>
-            <li>
-              <label htmlFor="brand">
-                <input type="checkbox" id="brand" />
-                <span>HP</span>
-              </label>
-            </li>
+            {data?.map((item, index) => (
+              <li key={index}>
+                <label htmlFor={item.name}>
+                  <input type="checkbox" id={item.name} />
+                  <span>{item.name}</span>
+                </label>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

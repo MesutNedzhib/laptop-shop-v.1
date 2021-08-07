@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductDetailsScreen.scss";
+import { useDispatch, useSelector } from "react-redux";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import CheckSharpIcon from "@material-ui/icons/CheckSharp";
@@ -7,8 +8,16 @@ import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import { useLocation } from "react-router-dom";
+import { getProductById } from "../../actions/productsActions";
 
 function ProductDetailsScreen() {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  const productId = location.pathname.split("/")[2];
+  const { product } = useSelector((state) => state.products);
+
   let images = [
     "https://laptop.bg/system/images/248254/normal/ROG_STRIX_G15_G512.jpg",
     "https://laptop.bg/system/images/248257/normal/ROG_STRIX_G15_G512.jpg",
@@ -19,6 +28,10 @@ function ProductDetailsScreen() {
 
   const [footerBodyActive, SetFooterBodyActive] = useState(true);
 
+  useEffect(() => {
+    dispatch(getProductById(productId));
+  }, [dispatch, productId]);
+
   const changeFooterBodyActiveState = () => {
     SetFooterBodyActive(!footerBodyActive);
   };
@@ -26,7 +39,7 @@ function ProductDetailsScreen() {
     <div className="productDetailsScreen">
       <div className="productDetailsScreen-container">
         <div className="productDetailsScreen-header">
-          <span>ASUS ROG STRIX G15 G512LI-HN065</span>
+          <span>{product?.data?.name}</span>
         </div>
         <div className="productDetailsScreen-body">
           <div className="productDetailsScreen-body-basic-info">
@@ -41,7 +54,7 @@ function ProductDetailsScreen() {
                 autoPlay={true}
                 showThumbs={false}
               >
-                {images.map((item, index) => (
+                {product?.data?.images?.map((item, index) => (
                   <img key={index} src={item} alt={item} />
                 ))}
               </Carousel>
@@ -73,7 +86,7 @@ function ProductDetailsScreen() {
                 autoPlay={true}
                 showThumbs={false}
               >
-                {images.map((item, index) => (
+                {product?.data?.images?.map((item, index) => (
                   <img key={index} src={item} alt={item} />
                 ))}
               </Carousel>
@@ -92,37 +105,45 @@ function ProductDetailsScreen() {
                 // showThumbs={false}
                 thumbWidth={100}
               >
-                {images.map((item, index) => (
+                {product?.data?.images?.map((item, index) => (
                   <img key={index} src={item} alt={item} />
                 ))}
               </Carousel>
             </div>
           </div>
           <div className="productDetailsScreen-body-basic-info">
-            <div className="price">$ 2199.99</div>
+            <div className="price">${product?.data?.price}</div>
             <div>
               <h3>Characteristics</h3>
               <ul>
                 <li>
                   <CheckSharpIcon className="icon" />{" "}
-                  <span>Intel Core i7-10750H</span>
-                </li>
-                <li>
-                  <CheckSharpIcon className="icon" /> <span>8 GB</span>
+                  <span>{product?.data?.processorModel}</span>
                 </li>
                 <li>
                   <CheckSharpIcon className="icon" />{" "}
-                  <span>Nvidia GeForce GTX 1660 Ti</span>
+                  <span>{product?.data?.memory}</span>
                 </li>
                 <li>
-                  <CheckSharpIcon className="icon" /> <span>512 GB SSD</span>
+                  <CheckSharpIcon className="icon" />{" "}
+                  <span>{product?.data?.video}</span>
+                </li>
+                <li>
+                  <CheckSharpIcon className="icon" />{" "}
+                  <span>{product?.data?.storage}</span>
                 </li>
               </ul>
             </div>
 
             <div className="available">
-              <CheckCircleIcon />
-              <span>Available</span>
+              {product?.data?.countInStock === 0 ? (
+                ""
+              ) : (
+                <>
+                  <CheckCircleIcon />
+                  <span>Available</span>
+                </>
+              )}
             </div>
             <div className="qunatity">
               <RemoveIcon />
@@ -149,16 +170,34 @@ function ProductDetailsScreen() {
             }`}
           >
             <div className="footer-body-row">
-              <div className="property-key">Video Card</div>
-              <div className="property-value">Nvidia GeForce GTX 1660 Ti</div>
+              <div className="property-key">Name</div>
+              <div className="property-value">{product?.data?.name}</div>
+            </div>
+            <div className="footer-body-row">
+              <div className="property-key">Brand</div>
+              <div className="property-value">{product?.data?.brand}</div>
+            </div>
+            <div className="footer-body-row">
+              <div className="property-key">Processor</div>
+              <div className="property-value">{product?.data?.processor}</div>
+            </div>
+            <div className="footer-body-row">
+              <div className="property-key">Processor-model</div>
+              <div className="property-value">
+                {product?.data?.processorModel}
+              </div>
             </div>
             <div className="footer-body-row">
               <div className="property-key">RAM</div>
-              <div className="property-value">8 GB DDR4</div>
+              <div className="property-value">{product?.data?.memory}</div>
+            </div>
+            <div className="footer-body-row">
+              <div className="property-key">Video Card</div>
+              <div className="property-value">{product?.data?.video}</div>
             </div>
             <div className="footer-body-row">
               <div className="property-key">STORAGE</div>
-              <div className="property-value">512 GB SSD</div>
+              <div className="property-value">{product?.data?.storage}</div>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 .productCard-container {
   width: 100%;
-  max-height: 425px;
+  height: 425px;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
   }
 
   @media (max-width: 480px) {
-    max-height: 430px;
+    height: 420px;
   }
 }
 
@@ -77,7 +77,7 @@
 }
 
 .productCard-footer {
-  margin-top: 8px;
+  margin-top: auto;
   display: flex;
   width: 100%;
   justify-content: space-between;

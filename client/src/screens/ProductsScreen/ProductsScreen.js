@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Filter from "../../components/Filter/Filter";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import "./ProductsScreen.scss";
 
-import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import MobileFilter from "../../components/MobileFilter/MobileFilter";
 import { useHistory } from "react-router-dom";
+import { getAllFilters, getAllProducts } from "../../actions/productsActions";
 function ProductsScreen() {
   const history = useHistory();
+  const dispatch = useDispatch();
+
   const [filterContentActive, setFilterContentActive] = useState(false);
+
+  const { products } = useSelector((state) => state.products);
+  const { filters } = useSelector((state) => state.filters);
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+    dispatch(getAllFilters());
+  }, [dispatch]);
 
   const changeFilterContentActiveState = () => {
     setFilterContentActive(!filterContentActive);
@@ -18,8 +29,15 @@ function ProductsScreen() {
     <div className="productsScreen">
       <div className="productScreen-container">
         <div className="productScreen-left-side">
-          <Filter show={true} />
-          <Filter show={true} />
+          <Filter show={true} name={"BRAND"} data={filters?.data?.brand} />
+          <Filter
+            show={true}
+            name={"PROCESSOR"}
+            data={filters?.data?.processor}
+          />
+          <Filter show={true} name={"MEMORY"} data={filters?.data?.memory} />
+          <Filter show={true} name={"GRAPHIC"} data={filters?.data?.video} />
+          <Filter show={true} name={"STORAGE"} data={filters?.data?.storage} />
         </div>
         <div className="productScreen-right-side">
           <div className="productOptions">
@@ -48,24 +66,38 @@ function ProductsScreen() {
                 />
               </div>
               <div className="productOption-filters-container-body">
-                <MobileFilter show={false} />
-                <MobileFilter show={false} />
-                <MobileFilter show={false} />
-                <MobileFilter show={false} />
-                <MobileFilter show={false} />
+                <MobileFilter
+                  show={false}
+                  name={"BRAND"}
+                  data={filters?.data?.brand}
+                />
+                <MobileFilter
+                  show={false}
+                  name={"PROCESSOR"}
+                  data={filters?.data?.processor}
+                />
+                <MobileFilter
+                  show={false}
+                  name={"MEMORY"}
+                  data={filters?.data?.memory}
+                />
+                <MobileFilter
+                  show={false}
+                  name={"GRAPHIC"}
+                  data={filters?.data?.video}
+                />
+                <MobileFilter
+                  show={false}
+                  name={"STORAGE"}
+                  data={filters?.data?.storage}
+                />
               </div>
             </div>
           </div>
           <div className="productCards-container">
-            <ProductCard  />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            {products?.data?.map((item, index) => (
+              <ProductCard key={index} product={item} />
+            ))}
           </div>
         </div>
       </div>

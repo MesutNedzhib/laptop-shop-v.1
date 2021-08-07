@@ -38,7 +38,9 @@
 
   .f-active {
     padding: 5px 0;
-    min-height: 122px;
+    // min-height: 122px;
+    max-height: 180px;
+    height: auto;
     transition: 0.3s;
   }
 
