@@ -1,19 +1,4 @@
-import bcrypt from "bcrypt-nodejs";
 const data = {
-  users: [
-    {
-      name: "admin",
-      email: "admin@abv.bg",
-      password: bcrypt.hashSync("admin"),
-      isAdmin: true,
-    },
-    {
-      name: "user",
-      email: "user@abv.bg",
-      password: bcrypt.hashSync("user"),
-    },
-  ],
-
   products: [
     {
       images: [
@@ -198,4 +183,4 @@ const data = {
   ],
 };
 
-export default data;
+module.exports = data;
