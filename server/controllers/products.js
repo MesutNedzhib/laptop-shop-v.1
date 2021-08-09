@@ -73,9 +73,10 @@ const getProductById = expressAsyncHandler(async (req, res) => {
 
 const getProductByName = expressAsyncHandler(async (req, res, next) => {
   const products = await Product.find({});
-  const { name } = req.body;
+
   let findedProduct = products.filter(
-    (item) => item.name.toLowerCase().indexOf(name.toLowerCase()) !== -1
+    (item) =>
+      item.name.toLowerCase().indexOf(req.body.value.toLowerCase()) !== -1
   );
 
   res.status(200).json({

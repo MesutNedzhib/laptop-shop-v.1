@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./CartScreen.scss";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import CartItem from "../../components/CartItem/CartItem";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import CurrencyFormat from "react-currency-format";
+import { GET_ALL_CART_ITEMS } from "../../constants/cartConstants";
 function CartScreen() {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.cart);
+
   return (
     <div className="cartScreen">
       <div className="cartScreen-container">
@@ -20,14 +26,28 @@ function CartScreen() {
             <h4>Price</h4>
           </div>
           <div className="cartScreen-body-main">
-            <CartItem />
-            <CartItem />
-            <CartItem />
+            {cartItems?.map((item, index) => (
+              <CartItem key={index} cartItem={item} />
+            ))}
           </div>
         </div>
         <div className="cartScreen-footer">
           <div className="cartScreen-subtotal">
-            Subtotal : <span>2199.99</span>
+            <CurrencyFormat
+              renderText={(value) => (
+                <>
+                  Subtotal ({cartItems.length} items):<span>{value}</span>
+                </>
+              )}
+              decimalScale={2}
+              value={cartItems.reduce(
+                (amount, item) => item.quantity * item.price + amount,
+                0
+              )}
+              displayType={"text"}
+              thousandSeparator={true}
+              prefix={"$"}
+            />
           </div>
           <div className="cartScreen-buttons">
             <button onClick={() => history.push("/")}>BACK TO SHOP</button>

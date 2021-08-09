@@ -73,15 +73,19 @@ export const getProductById = (_id) => async (dispatch) => {
   }
 };
 
-export const getProductByName = (name) => async (dispatch) => {
+export const getProductByName = (value) => async (dispatch) => {
   dispatch({
     type: GET_PRODUCT_BY_NAME_REQUEST,
   });
+
   try {
-    const { data } = await axios.get(`/api/products/${name}`);
+    const { data } = await axios.post(`/api/products/get-product-by-name`, {
+      value,
+    });
+
     dispatch({
       type: GET_PRODUCT_BY_NAME_SUCCESS,
-      payload: data.data,
+      payload: data,
     });
   } catch (err) {
     dispatch({

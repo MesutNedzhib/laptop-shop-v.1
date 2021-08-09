@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Navbar.scss";
 
 // Material Ui - Icons
@@ -15,15 +15,21 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllFilters } from "../../actions/productsActions";
+import {
+  getAllFilters,
+  getAllProducts,
+  getProductByName,
+} from "../../actions/productsActions";
 
 function Navbar() {
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const { cartItems } = useSelector((state) => state.cart);
   const [showSearchLine, setShowSearchLine] = useState(false);
   const [menuContentActive, setMenuContentActive] = useState(false);
   const [menuContentAccountActive, setMenuContentAccountActive] =
     useState(false);
-
 
   const changeMenuContentActiveState = () => {
     setMenuContentActive(!menuContentActive);
@@ -35,8 +41,11 @@ function Navbar() {
 
   const searchValueHandle = (value) => {
     if (value) {
+      history.push("/products");
       setShowSearchLine(true);
+      dispatch(getProductByName(value));
     } else {
+      dispatch(getAllProducts());
       setShowSearchLine(false);
     }
   };
@@ -101,12 +110,16 @@ function Navbar() {
               className={showSearchLine ? "active-search-line" : ""}
               onChange={(e) => searchValueHandle(e.target.value)}
               placeholder="Search..."
+              // ref={searchFiled}
             />
             <SearchIcon style={{ color: "white" }} />
           </div>
           <div className="navbar-cart">
             <Link to="/cart">
-              <Badge badgeContent={2} color="secondary">
+              <Badge
+                badgeContent={cartItems?.lenght === 0 ? 0 : cartItems.length}
+                color="error"
+              >
                 <ShoppingCartIcon
                   style={{ width: "25px", height: "25px", color: "white" }}
                 />

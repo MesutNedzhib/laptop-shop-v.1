@@ -11,6 +11,9 @@ import {
   GET_PRODUCT_BY_ID_FAIL,
   GET_PRODUCT_BY_ID_REQUEST,
   GET_PRODUCT_BY_ID_SUCCESS,
+  GET_PRODUCT_BY_NAME_FAIL,
+  GET_PRODUCT_BY_NAME_REQUEST,
+  GET_PRODUCT_BY_NAME_SUCCESS,
 } from "../constants/productsConstants";
 
 export const productsReducer = (state = { products: [] }, action) => {
@@ -27,6 +30,13 @@ export const productsReducer = (state = { products: [] }, action) => {
     case GET_PRODUCT_BY_ID_SUCCESS:
       return { loading: false, product: action.payload };
     case GET_PRODUCT_BY_ID_FAIL:
+      return { loading: false, error: action.payload };
+
+    case GET_PRODUCT_BY_NAME_REQUEST:
+      return { loading: true };
+    case GET_PRODUCT_BY_NAME_SUCCESS:
+      return { loading: false, products: action.payload };
+    case GET_PRODUCT_BY_NAME_FAIL:
       return { loading: false, error: action.payload };
 
     case GET_PRODUCTS_BY_MULTY_FILTER_REQUEST:
