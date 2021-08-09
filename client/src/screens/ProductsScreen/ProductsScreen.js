@@ -9,7 +9,6 @@ import MobileFilter from "../../components/MobileFilter/MobileFilter";
 import { useHistory } from "react-router-dom";
 import { getAllFilters, getAllProducts } from "../../actions/productsActions";
 function ProductsScreen() {
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const [filterContentActive, setFilterContentActive] = useState(false);

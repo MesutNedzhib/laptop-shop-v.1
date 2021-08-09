@@ -11,18 +11,12 @@ const insertManyProductsToMongo = expressAsyncHandler(async (req, res) => {
   });
 });
 
-const isWork = expressAsyncHandler(async (req, res) => {
-  res.status(200).json({
-    message: "Work",
-  });
-});
-
 const getAllProducts = expressAsyncHandler(async (req, res) => {
   const products = await Product.find({});
 
   res.status(200).json({
     success: true,
-    message: "All Products",
+    message: "ALL PRODUCTS",
     data: products,
   });
 });
@@ -61,7 +55,7 @@ const getAllFilters = expressAsyncHandler(async (req, res) => {
 
   res.status(200).json({
     success: true,
-    message: "Get Filters",
+    message: "GET FILTERS",
     data: filters,
   });
 });
@@ -72,8 +66,33 @@ const getProductById = expressAsyncHandler(async (req, res) => {
 
   res.status(200).json({
     success: true,
-    message: "Product By Id",
+    message: "GET PRODUCT BY ID",
     data: product,
+  });
+});
+
+const getProductByName = expressAsyncHandler(async (req, res, next) => {
+  const products = await Product.find({});
+  let findedProduct = products.filter(
+    (item) =>
+      item.name.toLowerCase().indexOf(req.params.name.toLowerCase()) !== -1
+  );
+
+  res.status(200).json({
+    success: true,
+    message: "GET PRODUCT BY NAME",
+    data: findedProduct,
+  });
+});
+
+const getProductsByMultyFilter = expressAsyncHandler(async (req, res, next) => {
+  const { model } = req.body;
+  const products = await Product.find(model);
+
+  res.status(200).json({
+    success: true,
+    message: "FINDED PRODUCTS",
+    data: products,
   });
 });
 
@@ -82,4 +101,6 @@ module.exports = {
   getAllProducts,
   getAllFilters,
   getProductById,
+  getProductByName,
+  getProductsByMultyFilter,
 };

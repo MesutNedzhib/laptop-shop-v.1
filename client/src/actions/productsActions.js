@@ -9,6 +9,9 @@ import {
   GET_PRODUCT_BY_ID_FAIL,
   GET_PRODUCT_BY_ID_REQUEST,
   GET_PRODUCT_BY_ID_SUCCESS,
+  GET_PRODUCT_BY_NAME_FAIL,
+  GET_PRODUCT_BY_NAME_REQUEST,
+  GET_PRODUCT_BY_NAME_SUCCESS,
 } from "../constants/productsConstants";
 
 export const getAllProducts = () => async (dispatch, getState) => {
@@ -62,6 +65,24 @@ export const getProductById = (_id) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: GET_PRODUCT_BY_ID_FAIL,
+      payload: err.message,
+    });
+  }
+};
+
+export const getProductByName = (name) => async (dispatch) => {
+  dispatch({
+    type: GET_PRODUCT_BY_NAME_REQUEST,
+  });
+  try {
+    const { data } = await axios.get(`/api/products/${name}`);
+    dispatch({
+      type: GET_PRODUCT_BY_NAME_SUCCESS,
+      payload: data.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_PRODUCT_BY_NAME_FAIL,
       payload: err.message,
     });
   }
