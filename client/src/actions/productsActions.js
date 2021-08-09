@@ -6,6 +6,9 @@ import {
   GET_ALL_PRODUCTS_FAIL,
   GET_ALL_PRODUCTS_REQUEST,
   GET_ALL_PRODUCTS_SUCCESS,
+  GET_PRODUCTS_BY_MULTY_FILTER_FAIL,
+  GET_PRODUCTS_BY_MULTY_FILTER_REQUEST,
+  GET_PRODUCTS_BY_MULTY_FILTER_SUCCESS,
   GET_PRODUCT_BY_ID_FAIL,
   GET_PRODUCT_BY_ID_REQUEST,
   GET_PRODUCT_BY_ID_SUCCESS,
@@ -85,5 +88,48 @@ export const getProductByName = (name) => async (dispatch) => {
       type: GET_PRODUCT_BY_NAME_FAIL,
       payload: err.message,
     });
+  }
+};
+
+export const getProductsByMultyFilter =
+  (model, sortValue) => async (dispatch) => {
+    dispatch({
+      type: GET_PRODUCTS_BY_MULTY_FILTER_REQUEST,
+    });
+    try {
+      const { data } = await axios.post(
+        `/api/products/get-products-by-multy-filter`,
+        { model }
+      );
+      if (data && sortValue.length !== 0) {
+        dispatch({
+          type: GET_PRODUCTS_BY_MULTY_FILTER_SUCCESS,
+          payload: sortData(sortValue, data.data),
+        });
+      }
+      dispatch({
+        type: GET_PRODUCTS_BY_MULTY_FILTER_SUCCESS,
+        payload: data,
+      });
+    } catch (err) {
+      dispatch({
+        type: GET_PRODUCTS_BY_MULTY_FILTER_FAIL,
+        payload: err.message,
+      });
+    }
+  };
+
+const sortData = (sortOption, productsData) => {
+  if (sortOption === "a-z") {
+    return productsData.sort((a, b) => (a.name > b.name ? 1 : -1));
+  }
+  if (sortOption === "z-a") {
+    return productsData.sort((a, b) => (a.name < b.name ? 1 : -1));
+  }
+  if (sortOption === "descending") {
+    return productsData.sort((a, b) => (a.price > b.price ? 1 : -1));
+  }
+  if (sortOption === "ascending") {
+    return productsData.sort((a, b) => (a.price < b.price ? 1 : -1));
   }
 };

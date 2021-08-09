@@ -1,0 +1,25 @@
+.messageBox {
+  width: 80%;
+  min-height: 20px;
+  margin: auto;
+  margin-top: 20px;
+  border: 1px solid #3a3a3a;
+  padding: 10px 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert-error {
+  background-color: rgba(255, 0, 0, 0.61);
+  color: #fff;
+}
+.alert-info {
+  //   background-color: rgba(128, 128, 128, 0.61);
+  background-color: rgba(4, 0, 255, 0.61);
+  //   color: rgb(89, 60, 255);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+}

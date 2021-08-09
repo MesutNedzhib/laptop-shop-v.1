@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Filter from "../../components/Filter/Filter";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import "./ProductsScreen.scss";
+import LoadingBox from "../../components/LoadingBox/LoadingBox";
+import MessageBox from "../../components/MessageBox/MessageBox";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import MobileFilter from "../../components/MobileFilter/MobileFilter";
@@ -13,7 +15,7 @@ function ProductsScreen() {
 
   const [filterContentActive, setFilterContentActive] = useState(false);
 
-  const { products } = useSelector((state) => state.products);
+  const { loading, error, products } = useSelector((state) => state.products);
   const { filters } = useSelector((state) => state.filters);
 
   useEffect(() => {
@@ -35,8 +37,8 @@ function ProductsScreen() {
             data={filters?.data?.processor}
           />
           <Filter show={true} name={"MEMORY"} data={filters?.data?.memory} />
-          <Filter show={true} name={"GRAPHIC"} data={filters?.data?.video} />
           <Filter show={true} name={"STORAGE"} data={filters?.data?.storage} />
+          <Filter show={true} name={"VIDEO"} data={filters?.data?.video} />
         </div>
         <div className="productScreen-right-side">
           <div className="productOptions">
@@ -82,22 +84,28 @@ function ProductsScreen() {
                 />
                 <MobileFilter
                   show={false}
-                  name={"GRAPHIC"}
-                  data={filters?.data?.video}
+                  name={"STORAGE"}
+                  data={filters?.data?.storage}
                 />
                 <MobileFilter
                   show={false}
-                  name={"STORAGE"}
-                  data={filters?.data?.storage}
+                  name={"VIDEO"}
+                  data={filters?.data?.video}
                 />
               </div>
             </div>
           </div>
-          <div className="productCards-container">
-            {products?.data?.map((item, index) => (
-              <ProductCard key={index} product={item} />
-            ))}
-          </div>
+          {loading ? (
+            <LoadingBox />
+          ) : error ? (
+            <MessageBox message={error} variant={"error"} />
+          ) : (
+            <div className="productCards-container">
+              {products?.data?.map((item, index) => (
+                <ProductCard key={index} product={item} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

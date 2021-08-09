@@ -73,9 +73,9 @@ const getProductById = expressAsyncHandler(async (req, res) => {
 
 const getProductByName = expressAsyncHandler(async (req, res, next) => {
   const products = await Product.find({});
+  const { name } = req.body;
   let findedProduct = products.filter(
-    (item) =>
-      item.name.toLowerCase().indexOf(req.params.name.toLowerCase()) !== -1
+    (item) => item.name.toLowerCase().indexOf(name.toLowerCase()) !== -1
   );
 
   res.status(200).json({
@@ -89,11 +89,13 @@ const getProductsByMultyFilter = expressAsyncHandler(async (req, res, next) => {
   const { model } = req.body;
   const products = await Product.find(model);
 
-  res.status(200).json({
-    success: true,
-    message: "FINDED PRODUCTS",
-    data: products,
-  });
+  if (products.length !== 0) {
+    res.status(200).json({
+      success: true,
+      message: `FINDED (${products.length}) PRODUCTS`,
+      data: products,
+    });
+  }
 });
 
 module.exports = {

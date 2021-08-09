@@ -14,6 +14,6 @@ router.get("/insert-many", insertManyProductsToMongo);
 router.get("/get-all-products", getAllProducts);
 router.get("/get-all-filters", getAllFilters);
 router.post("/get-product-by-id", getProductById);
-router.get("/product-by-name", getProductByName);
-router.post("/get-product-by-multy-filter", getProductsByMultyFilter);
+router.post("/get-product-by-name", getProductByName);
+router.post("/get-products-by-multy-filter", getProductsByMultyFilter);
 module.exports = router;
