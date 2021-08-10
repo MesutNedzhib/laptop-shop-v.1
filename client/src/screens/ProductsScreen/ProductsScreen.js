@@ -5,10 +5,10 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import "./ProductsScreen.scss";
 import LoadingBox from "../../components/LoadingBox/LoadingBox";
 import MessageBox from "../../components/MessageBox/MessageBox";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import MobileFilter from "../../components/MobileFilter/MobileFilter";
-import { useHistory } from "react-router-dom";
 import { getAllFilters, getAllProducts } from "../../actions/productsActions";
 function ProductsScreen() {
   const dispatch = useDispatch();
@@ -21,7 +21,14 @@ function ProductsScreen() {
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(getAllFilters());
+    localStorage.removeItem("filters");
   }, [dispatch]);
+
+  const clearFilterBtnHandle = () => {
+    localStorage.removeItem("filters");
+    dispatch(getAllProducts());
+    dispatch(getAllFilters());
+  };
 
   const changeFilterContentActiveState = () => {
     setFilterContentActive(!filterContentActive);
@@ -30,6 +37,18 @@ function ProductsScreen() {
     <div className="productsScreen">
       <div className="productScreen-container">
         <div className="productScreen-left-side">
+          {localStorage.getItem("filters") ? (
+            <div
+              className="filter-clear-btn"
+              onClick={() => clearFilterBtnHandle()}
+            >
+              <HighlightOffIcon />
+              <span>CLEAR FILTERS</span>
+            </div>
+          ) : (
+            ""
+          )}
+
           <Filter show={true} name={"BRAND"} data={filters?.data?.brand} />
           <Filter
             show={true}

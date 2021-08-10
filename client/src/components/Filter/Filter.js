@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./Filter.scss";
 import { useDispatch } from "react-redux";
-import { getProductsByMultyFilter } from "../../actions/productsActions";
+import {
+  getAllProducts,
+  getProductsByMultyFilter,
+} from "../../actions/productsActions";
 
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -22,9 +25,16 @@ function Filter({ show, name, data }) {
       delete GLOBAL_FILTER_STATE[lowName];
     }
 
-    dispatch(
-      getProductsByMultyFilter(GLOBAL_FILTER_STATE, GLOBAL_SORT_VALUE_STATE)
-    );
+    if (Object.keys(GLOBAL_FILTER_STATE).length === 0) {
+      localStorage.removeItem("filters");
+      dispatch(getAllProducts());
+    } else {
+      dispatch(
+        getProductsByMultyFilter(GLOBAL_FILTER_STATE, GLOBAL_SORT_VALUE_STATE)
+      );
+
+      localStorage.setItem("filters", "active");
+    }
   };
 
   const changeActiveFilterState = () => {

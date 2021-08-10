@@ -93,7 +93,7 @@ const getProductsByMultyFilter = expressAsyncHandler(async (req, res, next) => {
   if (products.length !== 0) {
     res.status(200).json({
       success: true,
-      message: `FINDED (${products.length}) PRODUCTS`,
+      message: `FINDED PRODUCTS`,
       data: products,
     });
   }

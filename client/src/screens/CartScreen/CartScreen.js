@@ -50,7 +50,9 @@ function CartScreen() {
             />
           </div>
           <div className="cartScreen-buttons">
-            <button onClick={() => history.push("/")}>BACK TO SHOP</button>
+            <button onClick={() => history.push("/products")}>
+              BACK TO SHOP
+            </button>
             <button disabled={true}>GO CHECKOUT</button>
           </div>
         </div>
