@@ -14,6 +14,7 @@ import {
   GET_PRODUCT_BY_NAME_FAIL,
   GET_PRODUCT_BY_NAME_REQUEST,
   GET_PRODUCT_BY_NAME_SUCCESS,
+  GET_SORTED_PRODUCTS,
 } from "../constants/productsConstants";
 
 export const productsReducer = (state = { products: [] }, action) => {
@@ -45,6 +46,9 @@ export const productsReducer = (state = { products: [] }, action) => {
       return { loading: false, products: action.payload };
     case GET_PRODUCTS_BY_MULTY_FILTER_FAIL:
       return { loading: false, error: action.payload };
+
+    case GET_SORTED_PRODUCTS:
+      return { loading: false, products: { data: action.payload } };
     default:
       return state;
   }

@@ -2,9 +2,10 @@ import React from "react";
 import "./MessageBox.scss";
 
 function MessageBox({ message, variant }) {
-  console.log(variant);
   return (
-    <div className={`messageBox alert-${variant === "error" ? "error " : "info"}`}>
+    <div
+      className={`messageBox alert-${variant === "error" ? "error " : "info"}`}
+    >
       {message === undefined ? "undefined" : message}
     </div>
   );

@@ -1,3 +1,31 @@
+.empty-cart-message {
+  max-width: 1100px;
+  margin: auto;
+  margin-top: 10px;
+  background-color: white;
+  padding: 10px 0;
+  box-shadow: 0px 5px 10px -2px #e7e7e7;
+  border: 1px solid orchid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  span {
+    &:first-child {
+      font-weight: 600;
+      font-size: 20px;
+      color: orchid;
+    }
+    &:last-child {
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: underline 1px black;
+      color: black;
+      font-weight: 500;
+    }
+  }
+}
 .cartScreen-container {
   padding-top: 55px;
   margin: auto;

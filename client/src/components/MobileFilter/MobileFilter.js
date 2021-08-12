@@ -1,13 +1,43 @@
 import React, { useState } from "react";
 import "./MobileFilter.scss";
-
+import { useDispatch } from "react-redux";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import {
+  getAllProducts,
+  getProductsByMultyFilter,
+} from "../../actions/productsActions";
+
+let GLOBAL_FILTER_STATE = {};
+let GLOBAL_SORT_VALUE_STATE = "a-z";
 
 function MobileFilter({ show, name, data }) {
-  const [activeFilterBody, setActiveFilterBody] = useState(show);
+  const dispatch = useDispatch();
+  const [activeFilterBody2, setActiveFilterBody] = useState(show);
   const changeActiveFilterState = () => {
-    setActiveFilterBody(!activeFilterBody);
+    setActiveFilterBody(!activeFilterBody2);
+  };
+
+  const getCheckboxValue = () => {
+    const lowName = name?.toLowerCase();
+    GLOBAL_FILTER_STATE[lowName] = getFilterValue(
+      document.getElementsByClassName(`${name}`)
+    );
+
+    if (GLOBAL_FILTER_STATE[lowName].length === 0) {
+      delete GLOBAL_FILTER_STATE[lowName];
+    }
+
+    if (Object.keys(GLOBAL_FILTER_STATE).length === 0) {
+      localStorage.removeItem("filters");
+      dispatch(getAllProducts());
+    } else {
+      dispatch(
+        getProductsByMultyFilter(GLOBAL_FILTER_STATE, GLOBAL_SORT_VALUE_STATE)
+      );
+
+      localStorage.setItem("filters", "active");
+    }
   };
 
   return (
@@ -18,16 +48,25 @@ function MobileFilter({ show, name, data }) {
           className="mobileFilter-header"
         >
           <h3>{name}</h3>
-          {activeFilterBody ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+          {activeFilterBody2 ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </div>
         <div
-          className={`mobileFilter-body ${activeFilterBody ? "mf-active" : ""}`}
+          className={`mobileFilter-body ${
+            activeFilterBody2 ? "mf-active" : ""
+          }`}
         >
           <ul>
             {data?.map((item, index) => (
               <li key={index}>
-                <label htmlFor={item.name}>
-                  <input type="checkbox" id={item.name} />
+                <label
+                  htmlFor={item.name + "s"}
+                  onClick={() => getCheckboxValue()}
+                >
+                  <input
+                    type="checkbox"
+                    id={item.name + "s"}
+                    className={`${name}`}
+                  />
                   <span>{item.name}</span>
                 </label>
               </li>
@@ -38,5 +77,16 @@ function MobileFilter({ show, name, data }) {
     </div>
   );
 }
+
+const getFilterValue = (list) => {
+  let value = [];
+  for (let i of list) {
+    if (i.checked === true) {
+      value.push(i.id.substring(0, i.id.length - 1));
+    }
+  }
+
+  return value;
+};
 
 export default MobileFilter;

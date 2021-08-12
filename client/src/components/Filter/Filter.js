@@ -55,13 +55,12 @@ function Filter({ show, name, data }) {
           <ul>
             {data?.map((item, index) => (
               <li key={index}>
-                <label htmlFor={item.name}>
+                <label htmlFor={item.name} onClick={() => getCheckboxValue()}>
                   <input
                     type="checkbox"
                     id={item.name}
                     defaultValue={item.name}
                     className={`${name}`}
-                    onClick={() => getCheckboxValue()}
                   />
                   <span>{item.name}</span>
                 </label>

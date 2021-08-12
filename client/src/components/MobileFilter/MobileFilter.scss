@@ -68,19 +68,23 @@
       background: #888;
       border-radius: 10px;
     }
-  }
 
-  label {
-    width: 100%;
-    display: inline-block;
-    padding: 2px 17px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+    label {
+      width: 100%;
+      display: block;
+      // padding: 2px 17px;
+      // display: flex;
+      // align-items: center;
+      cursor: pointer;
 
-    span {
-      margin-left: 5px;
-      margin-bottom: 3px;
+      span {
+        margin-left: 5px;
+        margin-bottom: 3px;
+      }
+
+      input {
+        cursor: pointer;
+      }
     }
   }
 

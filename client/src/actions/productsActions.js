@@ -15,6 +15,7 @@ import {
   GET_PRODUCT_BY_NAME_FAIL,
   GET_PRODUCT_BY_NAME_REQUEST,
   GET_PRODUCT_BY_NAME_SUCCESS,
+  GET_SORTED_PRODUCTS,
 } from "../constants/productsConstants";
 
 export const getAllProducts = () => async (dispatch, getState) => {
@@ -122,6 +123,18 @@ export const getProductsByMultyFilter =
       });
     }
   };
+
+export const sortProducts = (value) => (dispatch, getState) => {
+  const getProducts = getState().products.products.data;
+  let backProducts;
+  if (getProducts && value.length !== 0) {
+    backProducts = sortData(value, getProducts);
+  }
+  dispatch({
+    type: GET_SORTED_PRODUCTS,
+    payload: backProducts,
+  });
+};
 
 const sortData = (sortOption, productsData) => {
   if (sortOption === "a-z") {

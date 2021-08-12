@@ -9,7 +9,12 @@ import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import MobileFilter from "../../components/MobileFilter/MobileFilter";
-import { getAllFilters, getAllProducts } from "../../actions/productsActions";
+import {
+  getAllFilters,
+  getAllProducts,
+  sortProducts,
+} from "../../actions/productsActions";
+
 function ProductsScreen() {
   const dispatch = useDispatch();
 
@@ -23,6 +28,10 @@ function ProductsScreen() {
     dispatch(getAllFilters());
     localStorage.removeItem("filters");
   }, [dispatch]);
+
+  const getSortValue = (value) => {
+    dispatch(sortProducts(value));
+  };
 
   const clearFilterBtnHandle = () => {
     localStorage.removeItem("filters");
@@ -69,8 +78,17 @@ function ProductsScreen() {
               <span>Filters</span>
             </div>
             <div className="productOption-sort">
-              <h4>Sort by</h4>
-              <span>value</span>
+              {/* <h4>Sort by</h4> */}
+              {/* <span>value</span> */}
+              <select
+                onChange={(e) => getSortValue(e.target.value)}
+                defaultValue="A-Z"
+              >
+                <option value="a-z">A-Z</option>
+                <option value="z-a">Z-A</option>
+                <option value="ascending">Ascending</option>
+                <option value="descending">Descending</option>
+              </select>
             </div>
           </div>
           <div
