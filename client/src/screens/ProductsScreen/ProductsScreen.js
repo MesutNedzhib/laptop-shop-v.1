@@ -20,8 +20,8 @@ function ProductsScreen() {
 
   const [filterContentActive, setFilterContentActive] = useState(false);
 
-  const { loading, error, products } = useSelector((state) => state.products);
-  const { filters } = useSelector((state) => state.filters);
+  const productsState = useSelector((state) => state.products);
+  const filtersState = useSelector((state) => state.filters);
 
   useEffect(() => {
     dispatch(getAllProducts());
@@ -57,16 +57,39 @@ function ProductsScreen() {
           ) : (
             ""
           )}
-
-          <Filter show={true} name={"BRAND"} data={filters?.data?.brand} />
-          <Filter
-            show={true}
-            name={"PROCESSOR"}
-            data={filters?.data?.processor}
-          />
-          <Filter show={true} name={"MEMORY"} data={filters?.data?.memory} />
-          <Filter show={true} name={"STORAGE"} data={filters?.data?.storage} />
-          <Filter show={true} name={"VIDEO"} data={filters?.data?.video} />
+          {filtersState.loading ? (
+            <LoadingBox />
+          ) : filtersState.error ? (
+            <MessageBox message={filtersState.error} variant="error" />
+          ) : (
+            <>
+              <Filter
+                show={true}
+                name={"BRAND"}
+                data={filtersState.filters?.data?.brand}
+              />
+              <Filter
+                show={true}
+                name={"PROCESSOR"}
+                data={filtersState.filters?.data?.processor}
+              />
+              <Filter
+                show={true}
+                name={"MEMORY"}
+                data={filtersState.filters?.data?.memory}
+              />
+              <Filter
+                show={true}
+                name={"STORAGE"}
+                data={filtersState.filters?.data?.storage}
+              />
+              <Filter
+                show={true}
+                name={"VIDEO"}
+                data={filtersState.filters?.data?.video}
+              />
+            </>
+          )}
         </div>
         <div className="productScreen-right-side">
           <div className="productOptions">
@@ -104,41 +127,60 @@ function ProductsScreen() {
                 />
               </div>
               <div className="productOption-filters-container-body">
-                <MobileFilter
-                  show={false}
-                  name={"BRAND"}
-                  data={filters?.data?.brand}
-                />
-                <MobileFilter
-                  show={false}
-                  name={"PROCESSOR"}
-                  data={filters?.data?.processor}
-                />
-                <MobileFilter
-                  show={false}
-                  name={"MEMORY"}
-                  data={filters?.data?.memory}
-                />
-                <MobileFilter
-                  show={false}
-                  name={"STORAGE"}
-                  data={filters?.data?.storage}
-                />
-                <MobileFilter
-                  show={false}
-                  name={"VIDEO"}
-                  data={filters?.data?.video}
-                />
+                {localStorage.getItem("filters") ? (
+                  <div
+                    className="filter-clear-btn"
+                    onClick={() => clearFilterBtnHandle()}
+                  >
+                    <HighlightOffIcon />
+                    <span>CLEAR FILTERS</span>
+                  </div>
+                ) : (
+                  ""
+                )}
+                {filtersState.loading ? (
+                  <LoadingBox />
+                ) : filtersState.error ? (
+                  <MessageBox message={filtersState.error} variant="error" />
+                ) : (
+                  <>
+                    <MobileFilter
+                      show={false}
+                      name={"BRAND"}
+                      data={filtersState.filters?.data?.brand}
+                    />
+                    <MobileFilter
+                      show={false}
+                      name={"PROCESSOR"}
+                      data={filtersState.filters?.data?.processor}
+                    />
+                    <MobileFilter
+                      show={false}
+                      name={"MEMORY"}
+                      data={filtersState.filters?.data?.memory}
+                    />
+                    <MobileFilter
+                      show={false}
+                      name={"STORAGE"}
+                      data={filtersState.filters?.data?.storage}
+                    />
+                    <MobileFilter
+                      show={false}
+                      name={"VIDEO"}
+                      data={filtersState.filters?.data?.video}
+                    />
+                  </>
+                )}
               </div>
             </div>
           </div>
-          {loading ? (
+          {productsState?.loading ? (
             <LoadingBox />
-          ) : error ? (
-            <MessageBox message={error} variant={"error"} />
+          ) : productsState?.error ? (
+            <MessageBox message={productsState?.error} variant={"error"} />
           ) : (
             <div className="productCards-container">
-              {products?.data?.map((item, index) => (
+              {productsState?.products?.data?.map((item, index) => (
                 <ProductCard key={index} product={item} />
               ))}
             </div>

@@ -23,7 +23,6 @@ function MobileFilter({ show, name, data }) {
     GLOBAL_FILTER_STATE[lowName] = getFilterValue(
       document.getElementsByClassName(`${name}`)
     );
-
     if (GLOBAL_FILTER_STATE[lowName].length === 0) {
       delete GLOBAL_FILTER_STATE[lowName];
     }

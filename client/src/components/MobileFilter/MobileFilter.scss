@@ -1,6 +1,6 @@
 .mobileFilter-container {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 1px 5px #e5e5e5;
   // border-radius: 10px;
@@ -44,12 +44,14 @@
     overflow-y: auto;
     overflow-x: hidden;
     transition: 0.3s;
+    padding: 0px 15px;
   }
 
   .mf-active {
-    padding: 5px 0;
-    min-height: 122px;
+    padding: 5px 15px;
     transition: 0.3s;
+    height: auto;
+    max-height: 135px;
   }
 
   ul {
