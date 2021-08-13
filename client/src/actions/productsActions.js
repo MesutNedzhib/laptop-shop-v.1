@@ -109,13 +109,14 @@ export const getProductsByMultyFilter =
       if (data && sortValue.length !== 0) {
         dispatch({
           type: GET_PRODUCTS_BY_MULTY_FILTER_SUCCESS,
-          payload: sortData(sortValue, data.data),
+          payload: { data: sortData(sortValue, data.data) },
+        });
+      } else if (data) {
+        dispatch({
+          type: GET_PRODUCTS_BY_MULTY_FILTER_SUCCESS,
+          payload: data,
         });
       }
-      dispatch({
-        type: GET_PRODUCTS_BY_MULTY_FILTER_SUCCESS,
-        payload: data,
-      });
     } catch (err) {
       dispatch({
         type: GET_PRODUCTS_BY_MULTY_FILTER_FAIL,

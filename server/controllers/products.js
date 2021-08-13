@@ -88,6 +88,7 @@ const getProductByName = expressAsyncHandler(async (req, res, next) => {
 
 const getProductsByMultyFilter = expressAsyncHandler(async (req, res, next) => {
   const { model } = req.body;
+
   const products = await Product.find(model);
 
   if (products.length !== 0) {

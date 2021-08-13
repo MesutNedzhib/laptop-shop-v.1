@@ -26,9 +26,10 @@ function Filter({ show, name, data }) {
       document.getElementsByClassName(`${name}`)
     );
 
-    if (DESKTOP_GLOBAL_FILTER_STATE[lowName].length === 0) {
+    if (DESKTOP_GLOBAL_FILTER_STATE[lowName]?.length === 0) {
       delete DESKTOP_GLOBAL_FILTER_STATE[lowName];
     }
+    // console.log(Object.keys(DESKTOP_GLOBAL_FILTER_STATE).length === 0);
 
     dispatch(
       getProductsByMultyFilter(
@@ -36,7 +37,6 @@ function Filter({ show, name, data }) {
         GLOBAL_SORT_VALUE_STATE
       )
     );
-
     localStorage.setItem("desktop_filters", "active");
   };
 

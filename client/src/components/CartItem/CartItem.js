@@ -15,10 +15,6 @@ import { GET_ALL_CART_ITEMS } from "../../constants/cartConstants";
 function CartItem({ cartItem }) {
   const dispatch = useDispatch();
 
-  const [currentQuantityState, setCurrentQuantityState] = useState(
-    cartItem.quantity
-  );
-
   const cartItemQuantityMinusHandle = () => {
     if (cartItem.quantity !== 1) {
       dispatch(
@@ -71,15 +67,7 @@ function CartItem({ cartItem }) {
         </div>
         <div className="cartItem-quantity">
           <RemoveIcon onClick={() => cartItemQuantityMinusHandle()} />
-          <input
-            type="number"
-            min="1"
-            value={cartItem.quantity}
-            // defaultValue={currentQuantityState}
-            // onChange={(e) =>
-            //   chnageCartItemQuantityHandle(e.target.value, cartItem._id)
-            // }
-          />
+          <input type="number" min="1" value={cartItem.quantity} />
 
           <AddIcon onClick={() => cartItemQuantityPlusHandle()} />
         </div>

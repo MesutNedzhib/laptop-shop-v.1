@@ -12,6 +12,7 @@ import { useLocation } from "react-router-dom";
 import { getProductById } from "../../actions/productsActions";
 import LoadingBox from "../../components/LoadingBox/LoadingBox";
 import MessageBox from "../../components/MessageBox/MessageBox";
+import { addToCart } from "../../actions/cartActions";
 function ProductDetailsScreen() {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -28,10 +29,26 @@ function ProductDetailsScreen() {
   ];
 
   const [footerBodyActive, SetFooterBodyActive] = useState(true);
+  let [currentQuantity, setCurrentQuantity] = useState(1);
 
   useEffect(() => {
     dispatch(getProductById(productId));
   }, [dispatch, productId]);
+
+  const addToCartHandle = (item) => {
+    dispatch(addToCart(item));
+  };
+
+  const currentQuantityMinusHandle = () => {
+    if (currentQuantity !== 1) {
+      setCurrentQuantity((currentQuantity -= 1));
+    }
+  };
+  const currentQuantityPlusHandle = () => {
+    if (product?.data?.countInStock !== currentQuantity) {
+      setCurrentQuantity((currentQuantity += 1));
+    }
+  };
 
   const changeFooterBodyActiveState = () => {
     SetFooterBodyActive(!footerBodyActive);
@@ -154,11 +171,32 @@ function ProductDetailsScreen() {
                 )}
               </div>
               <div className="qunatity">
-                <RemoveIcon />
-                <input type="number" min="1" defaultValue="1" />
-                <AddIcon />
+                {/* <RemoveIcon onClick={() => currentQuantityMinusHandle()} /> */}
+                <input
+                  type="number"
+                  min="1"
+                  defaultValue="1"
+                  onChange={(e) => setCurrentQuantity(e.target.value)}
+                />
+                {/* <AddIcon onClick={() => currentQuantityPlusHandle()} /> */}
               </div>
-              <div className="buyBtn">
+              <div
+                className="buyBtn"
+                onClick={() =>
+                  addToCartHandle({
+                    _id: product.data?._id,
+                    name: product?.data?.name,
+                    image: product?.data?.images[0],
+                    processorModel: product?.data?.processorModel,
+                    memory: product?.data?.memory,
+                    video: product?.data?.video,
+                    storage: product?.data?.storage,
+                    price: product?.data?.price,
+                    countInStock: product?.data?.countInStock,
+                    quantity: currentQuantity,
+                  })
+                }
+              >
                 <button>BUY</button>
               </div>
             </div>
