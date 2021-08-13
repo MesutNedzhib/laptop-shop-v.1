@@ -9,32 +9,35 @@ import {
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-let GLOBAL_FILTER_STATE = {};
+let DESKTOP_GLOBAL_FILTER_STATE = {};
 let GLOBAL_SORT_VALUE_STATE = "a-z";
 
 function Filter({ show, name, data }) {
   const dispatch = useDispatch();
   const [activeFilterBody, setActiveFilterBody] = useState(show);
 
+  if (Object.keys(DESKTOP_GLOBAL_FILTER_STATE).length === 0) {
+    localStorage.removeItem("desktop_filters");
+  }
+
   const getCheckboxValue = () => {
     const lowName = name?.toLowerCase();
-    GLOBAL_FILTER_STATE[lowName] = getFilterValue(
+    DESKTOP_GLOBAL_FILTER_STATE[lowName] = getFilterValue(
       document.getElementsByClassName(`${name}`)
     );
-    if (GLOBAL_FILTER_STATE[lowName].length === 0) {
-      delete GLOBAL_FILTER_STATE[lowName];
+
+    if (DESKTOP_GLOBAL_FILTER_STATE[lowName].length === 0) {
+      delete DESKTOP_GLOBAL_FILTER_STATE[lowName];
     }
 
-    if (Object.keys(GLOBAL_FILTER_STATE).length === 0) {
-      localStorage.removeItem("filters");
-      dispatch(getAllProducts());
-    } else {
-      dispatch(
-        getProductsByMultyFilter(GLOBAL_FILTER_STATE, GLOBAL_SORT_VALUE_STATE)
-      );
+    dispatch(
+      getProductsByMultyFilter(
+        DESKTOP_GLOBAL_FILTER_STATE,
+        GLOBAL_SORT_VALUE_STATE
+      )
+    );
 
-      localStorage.setItem("filters", "active");
-    }
+    localStorage.setItem("desktop_filters", "active");
   };
 
   const changeActiveFilterState = () => {

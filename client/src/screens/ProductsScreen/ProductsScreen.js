@@ -34,7 +34,8 @@ function ProductsScreen() {
   };
 
   const clearFilterBtnHandle = () => {
-    localStorage.removeItem("filters");
+    localStorage.removeItem("desktop_filters");
+    localStorage.removeItem("mobile_filters");
     dispatch(getAllProducts());
     dispatch(getAllFilters());
   };
@@ -46,7 +47,7 @@ function ProductsScreen() {
     <div className="productsScreen">
       <div className="productScreen-container">
         <div className="productScreen-left-side">
-          {localStorage.getItem("filters") ? (
+          {localStorage.getItem("desktop_filters") ? (
             <div
               className="filter-clear-btn"
               onClick={() => clearFilterBtnHandle()}
@@ -127,7 +128,7 @@ function ProductsScreen() {
                 />
               </div>
               <div className="productOption-filters-container-body">
-                {localStorage.getItem("filters") ? (
+                {localStorage.getItem("mobile_filters") ? (
                   <div
                     className="filter-clear-btn"
                     onClick={() => clearFilterBtnHandle()}

@@ -8,7 +8,7 @@ import {
   getProductsByMultyFilter,
 } from "../../actions/productsActions";
 
-let GLOBAL_FILTER_STATE = {};
+let MOBILE_GLOBAL_FILTER_STATE = {};
 let GLOBAL_SORT_VALUE_STATE = "a-z";
 
 function MobileFilter({ show, name, data }) {
@@ -18,25 +18,25 @@ function MobileFilter({ show, name, data }) {
     setActiveFilterBody(!activeFilterBody2);
   };
 
+  if (Object.keys(MOBILE_GLOBAL_FILTER_STATE).length === 0) {
+    localStorage.removeItem("mobile_filters");
+  }
+
   const getCheckboxValue = () => {
     const lowName = name?.toLowerCase();
-    GLOBAL_FILTER_STATE[lowName] = getFilterValue(
+    MOBILE_GLOBAL_FILTER_STATE[lowName] = getFilterValue(
       document.getElementsByClassName(`${name}`)
     );
-    if (GLOBAL_FILTER_STATE[lowName].length === 0) {
-      delete GLOBAL_FILTER_STATE[lowName];
+    if (MOBILE_GLOBAL_FILTER_STATE[lowName].length === 0) {
+      delete MOBILE_GLOBAL_FILTER_STATE[lowName];
     }
-
-    if (Object.keys(GLOBAL_FILTER_STATE).length === 0) {
-      localStorage.removeItem("filters");
-      dispatch(getAllProducts());
-    } else {
-      dispatch(
-        getProductsByMultyFilter(GLOBAL_FILTER_STATE, GLOBAL_SORT_VALUE_STATE)
-      );
-
-      localStorage.setItem("filters", "active");
-    }
+    dispatch(
+      getProductsByMultyFilter(
+        MOBILE_GLOBAL_FILTER_STATE,
+        GLOBAL_SORT_VALUE_STATE
+      )
+    );
+    localStorage.setItem("mobile_filters", "active");
   };
 
   return (

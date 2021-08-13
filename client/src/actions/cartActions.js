@@ -22,9 +22,10 @@ export const removeFromCartById = (_id) => (dispatch, getState) => {
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };
 
-export const changeCartItemQuantity = (cartItem) => (dispatch) => {
+export const changeCartItemQuantity = (cartItem) => (dispatch, getState) => {
   dispatch({
     type: CHANGE_CART_ITEM_QUANTITY,
     payload: cartItem,
   });
+  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };

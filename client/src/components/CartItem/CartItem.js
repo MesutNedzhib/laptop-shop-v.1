@@ -20,23 +20,22 @@ function CartItem({ cartItem }) {
   );
 
   const cartItemQuantityMinusHandle = () => {
-    if (currentQuantityState !== 1) {
-      setCurrentQuantityState(currentQuantityState - 1);
+    if (cartItem.quantity !== 1) {
       dispatch(
         changeCartItemQuantity({
-          quantity: currentQuantityState,
+          quantity: cartItem.quantity - 1,
           _id: cartItem._id,
         })
       );
       dispatch({ type: GET_ALL_CART_ITEMS });
     }
   };
+
   const cartItemQuantityPlusHandle = () => {
-    setCurrentQuantityState(currentQuantityState + 1);
     if (cartItem.countInStock !== cartItem.quantity) {
       dispatch(
         changeCartItemQuantity({
-          quantity: currentQuantityState,
+          quantity: cartItem.quantity + 1,
           _id: cartItem._id,
         })
       );
@@ -75,7 +74,7 @@ function CartItem({ cartItem }) {
           <input
             type="number"
             min="1"
-            value={currentQuantityState}
+            value={cartItem.quantity}
             // defaultValue={currentQuantityState}
             // onChange={(e) =>
             //   chnageCartItemQuantityHandle(e.target.value, cartItem._id)
