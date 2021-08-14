@@ -26,7 +26,7 @@ function ProductsScreen() {
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(getAllFilters());
-    localStorage.removeItem("filters");
+    // localStorage.removeItem("filters");
   }, [dispatch]);
 
   const getSortValue = (value) => {

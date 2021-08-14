@@ -22,6 +22,7 @@ function Filter({ show, name, data }) {
 
   const getCheckboxValue = () => {
     const lowName = name?.toLowerCase();
+
     DESKTOP_GLOBAL_FILTER_STATE[lowName] = getFilterValue(
       document.getElementsByClassName(`${name}`)
     );
@@ -29,7 +30,6 @@ function Filter({ show, name, data }) {
     if (DESKTOP_GLOBAL_FILTER_STATE[lowName]?.length === 0) {
       delete DESKTOP_GLOBAL_FILTER_STATE[lowName];
     }
-    // console.log(Object.keys(DESKTOP_GLOBAL_FILTER_STATE).length === 0);
 
     dispatch(
       getProductsByMultyFilter(
@@ -58,12 +58,13 @@ function Filter({ show, name, data }) {
           <ul>
             {data?.map((item, index) => (
               <li key={index}>
-                <label htmlFor={item.name} onClick={() => getCheckboxValue()}>
+                <label htmlFor={item.name}>
                   <input
                     type="checkbox"
                     id={item.name}
                     defaultValue={item.name}
                     className={`${name}`}
+                    onClick={() => getCheckboxValue()}
                   />
                   <span>{item.name}</span>
                 </label>
