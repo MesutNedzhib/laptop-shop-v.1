@@ -67,68 +67,74 @@ function ProductDetailsScreen() {
         <div className="productDetailsScreen-body">
           <div className="productDetailsScreen-body-basic-info">
             <>
-              <Carousel
-                id="carousel"
-                showStatus={false}
-                showArrows={false}
-                showIndicators={false}
-                emulateTouch
-                infiniteLoop
-                autoPlay={true}
-                showThumbs={false}
-              >
-                {product?.data?.images?.map((item, index) => (
-                  <img key={index} src={item} alt={item} />
-                ))}
-              </Carousel>
-
-              <Carousel
-                showStatus={false}
-                showArrows={false}
-                showIndicators={false}
-                emulateTouch
-                infiniteLoop
-                autoPlay={true}
-                showThumbs={false}
-                interval={5000}
-              >
-                {images.map((item, index) => (
-                  <img key={index} src={item} alt={item} />
-                ))}
-              </Carousel>
-
-              <Carousel
-                id="carousel"
-                showStatus={false}
-                showArrows={false}
-                showIndicators={false}
-                emulateTouch
-                infiniteLoop
-                autoPlay={true}
-                showThumbs={false}
-              >
-                {product?.data?.images?.map((item, index) => (
-                  <img key={index} src={item} alt={item} />
-                ))}
-              </Carousel>
+              <div>
+                <Carousel
+                  id="carousel"
+                  showStatus={false}
+                  showArrows={false}
+                  showIndicators={false}
+                  emulateTouch
+                  infiniteLoop
+                  autoPlay={true}
+                  showThumbs={false}
+                >
+                  {product?.data?.images?.map((item, index) => (
+                    <img key={index} src={item} alt={item} />
+                  ))}
+                </Carousel>
+              </div>
+              <div>
+                <Carousel
+                  showStatus={false}
+                  showArrows={false}
+                  showIndicators={false}
+                  emulateTouch
+                  infiniteLoop
+                  autoPlay={true}
+                  showThumbs={false}
+                  interval={5000}
+                >
+                  {images.map((item, index) => (
+                    <img key={index} src={item} alt={item} />
+                  ))}
+                </Carousel>
+              </div>
+              <div>
+                <Carousel
+                  id="carousel"
+                  showStatus={false}
+                  showArrows={false}
+                  showIndicators={false}
+                  emulateTouch
+                  infiniteLoop
+                  autoPlay={true}
+                  showThumbs={false}
+                >
+                  {product?.data?.images?.map((item, index) => (
+                    <img key={index} src={item} alt={item} />
+                  ))}
+                </Carousel>
+              </div>
             </>
           </div>
           <div className="productDetailsScreen-body-carousel">
-            <Carousel
-              id="carousel"
-              showStatus={false}
-              showArrows={true}
-              // showIndicators={false}
-              emulateTouch
-              // infiniteLoop
-              autoPlay={false}
-              // showThumbs={false}
-              thumbWidth={100}
-            >
-              {product?.data?.images?.map((item, index) => (
-                <img key={index} src={item} alt={item} />
-              ))}
-            </Carousel>
+            <div>
+              <Carousel
+                id="carousel"
+                showStatus={false}
+                showArrows={true}
+                // showIndicators={false}
+                emulateTouch
+                // infiniteLoop
+                autoPlay={false}
+                // showThumbs={false}
+                thumbWidth={100}
+              >
+                {product?.data?.images?.map((item, index) => (
+                  <img key={index} src={item} alt={item} />
+                ))}
+              </Carousel>
+            </div>
           </div>
           <div className="productDetailsScreen-body-basic-info">
             <div className="price">${product?.data?.price}</div>
