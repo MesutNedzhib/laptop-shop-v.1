@@ -18,7 +18,9 @@ function ProductDetailsScreen() {
   const dispatch = useDispatch();
 
   const productId = location.pathname.split("/")[2];
-  const { loading, error, product } = useSelector((state) => state.products);
+  const { loading, error, product } = useSelector(
+    (state) => state.productDetails
+  );
 
   let images = [
     "https://laptop.bg/system/images/248254/normal/ROG_STRIX_G15_G512.jpg",

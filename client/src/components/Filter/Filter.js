@@ -23,6 +23,10 @@ function Filter({ show, name, data }) {
   const getCheckboxValue = () => {
     const lowName = name?.toLowerCase();
 
+    if (localStorage.getItem("sort")) {
+      GLOBAL_SORT_VALUE_STATE = localStorage.getItem("sort");
+    }
+
     DESKTOP_GLOBAL_FILTER_STATE[lowName] = getFilterValue(
       document.getElementsByClassName(`${name}`)
     );

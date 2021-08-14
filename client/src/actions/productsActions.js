@@ -106,7 +106,7 @@ export const getProductsByMultyFilter =
         `/api/products/get-products-by-multy-filter`,
         { model }
       );
-      if (data && sortValue.length !== 0) {
+      if (data && sortValue?.length !== 0) {
         dispatch({
           type: GET_PRODUCTS_BY_MULTY_FILTER_SUCCESS,
           payload: { data: sortData(sortValue, data.data) },

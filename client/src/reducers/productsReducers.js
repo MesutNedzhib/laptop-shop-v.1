@@ -26,13 +26,6 @@ export const productsReducer = (state = { products: [] }, action) => {
     case GET_ALL_PRODUCTS_FAIL:
       return { loading: false, error: action.payload };
 
-    case GET_PRODUCT_BY_ID_REQUEST:
-      return { loading: true };
-    case GET_PRODUCT_BY_ID_SUCCESS:
-      return { loading: false, product: action.payload };
-    case GET_PRODUCT_BY_ID_FAIL:
-      return { loading: false, error: action.payload };
-
     case GET_PRODUCT_BY_NAME_REQUEST:
       return { loading: true };
     case GET_PRODUCT_BY_NAME_SUCCESS:
@@ -61,6 +54,18 @@ export const productsFiltersReducer = (state = { filters: {} }, action) => {
     case GET_ALL_FILTERS_SUCCESS:
       return { loading: false, filters: action.payload };
     case GET_ALL_FILTERS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+export const productDetailsReducer = (state = { product: [] }, action) => {
+  switch (action.type) {
+    case GET_PRODUCT_BY_ID_REQUEST:
+      return { loading: true };
+    case GET_PRODUCT_BY_ID_SUCCESS:
+      return { loading: false, product: action.payload };
+    case GET_PRODUCT_BY_ID_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

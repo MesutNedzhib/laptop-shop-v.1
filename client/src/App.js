@@ -4,8 +4,18 @@ import ProductsScreen from "./screens/ProductsScreen/ProductsScreen";
 import { Route } from "react-router-dom";
 import ProductDetailsScreen from "./screens/ProductDetailsScreen/ProductDetailsScreen";
 import HomeScreen from "./screens/HomeScreen/HomeScreen";
+import { getAllFilters, getAllProducts } from "./actions/productsActions";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllProducts());
+    dispatch(getAllFilters());
+    // localStorage.removeItem("filters");
+    localStorage.removeItem("sort");
+  }, [dispatch]);
   return (
     <div className="app">
       <Navbar />

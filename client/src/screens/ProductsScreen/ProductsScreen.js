@@ -17,20 +17,21 @@ import {
 
 function ProductsScreen() {
   const dispatch = useDispatch();
-
-  const [filterContentActive, setFilterContentActive] = useState(false);
-
   const productsState = useSelector((state) => state.products);
   const filtersState = useSelector((state) => state.filters);
 
-  useEffect(() => {
-    dispatch(getAllProducts());
-    dispatch(getAllFilters());
-    // localStorage.removeItem("filters");
-  }, [dispatch]);
+  const [filterContentActive, setFilterContentActive] = useState(false);
+
+  // useEffect(() => {
+  //   dispatch(getAllProducts());
+  //   dispatch(getAllFilters());
+  //   // localStorage.removeItem("filters");
+  //   localStorage.removeItem("sort");
+  // }, [dispatch]);
 
   const getSortValue = (value) => {
     dispatch(sortProducts(value));
+    localStorage.setItem("sort", value);
   };
 
   const clearFilterBtnHandle = () => {
@@ -104,10 +105,7 @@ function ProductsScreen() {
             <div className="productOption-sort">
               {/* <h4>Sort by</h4> */}
               {/* <span>value</span> */}
-              <select
-                onChange={(e) => getSortValue(e.target.value)}
-                defaultValue="A-Z"
-              >
+              <select onChange={(e) => getSortValue(e.target.value)}>
                 <option value="a-z">A-Z</option>
                 <option value="z-a">Z-A</option>
                 <option value="ascending">Ascending</option>
