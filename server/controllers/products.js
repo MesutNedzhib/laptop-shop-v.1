@@ -79,11 +79,18 @@ const getProductByName = expressAsyncHandler(async (req, res, next) => {
       item.name.toLowerCase().indexOf(req.body.value.toLowerCase()) !== -1
   );
 
-  res.status(200).json({
-    success: true,
-    message: "GET PRODUCT BY NAME",
-    data: findedProduct,
-  });
+  if (findedProduct.length !== 0) {
+    res.status(200).json({
+      success: true,
+      message: "GET PRODUCT BY NAME",
+      data: findedProduct,
+    });
+  } else {
+    res.status(404).json({
+      success: true,
+      message: `GET PRODUCT BY NAME - NOT FOUND!`,
+    });
+  }
 });
 
 const getProductsByMultyFilter = expressAsyncHandler(async (req, res, next) => {
@@ -96,6 +103,11 @@ const getProductsByMultyFilter = expressAsyncHandler(async (req, res, next) => {
       success: true,
       message: `FINDED PRODUCTS`,
       data: products,
+    });
+  } else {
+    res.status(404).json({
+      success: true,
+      message: `NOT FOUND`,
     });
   }
 });
