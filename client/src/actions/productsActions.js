@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  CHANGE_FILTER_CHECKED_STATE,
   GET_ALL_FILTERS_FAIL,
   GET_ALL_FILTERS_REQUEST,
   GET_ALL_FILTERS_SUCCESS,
@@ -52,6 +53,10 @@ export const getAllFilters = () => async (dispatch) => {
       payload: err.message,
     });
   }
+};
+
+export const changeFilterCheckedState = (data) => (dispatch) => {
+  dispatch({ type: CHANGE_FILTER_CHECKED_STATE, payload: data });
 };
 
 export const getProductById = (_id) => async (dispatch) => {

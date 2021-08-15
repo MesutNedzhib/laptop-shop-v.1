@@ -1,4 +1,5 @@
 import {
+  CHANGE_FILTER_CHECKED_STATE,
   GET_ALL_FILTERS_FAIL,
   GET_ALL_FILTERS_REQUEST,
   GET_ALL_FILTERS_SUCCESS,
@@ -55,6 +56,10 @@ export const productsFiltersReducer = (state = { filters: {} }, action) => {
       return { loading: false, filters: action.payload };
     case GET_ALL_FILTERS_FAIL:
       return { loading: false, error: action.payload };
+    case CHANGE_FILTER_CHECKED_STATE:
+      const toChange = action.payload;
+      console.log(toChange);
+      
     default:
       return state;
   }

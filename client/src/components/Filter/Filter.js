@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Filter.scss";
 import { useDispatch } from "react-redux";
 import {
+  changeFilterCheckedState,
   getAllProducts,
   getProductsByMultyFilter,
 } from "../../actions/productsActions";
@@ -20,6 +21,8 @@ function Filter({ show, name, data }) {
     localStorage.removeItem("desktop_filters");
   }
 
+  let list = getFilterValue(document.getElementsByClassName(`${name}`)).newList;
+
   const getCheckboxValue = () => {
     const lowName = name?.toLowerCase();
 
@@ -29,11 +32,13 @@ function Filter({ show, name, data }) {
 
     DESKTOP_GLOBAL_FILTER_STATE[lowName] = getFilterValue(
       document.getElementsByClassName(`${name}`)
-    );
+    ).value;
 
     if (DESKTOP_GLOBAL_FILTER_STATE[lowName]?.length === 0) {
       delete DESKTOP_GLOBAL_FILTER_STATE[lowName];
     }
+
+    localStorage.setItem("active-filters", JSON.stringify({ name: list }));
 
     dispatch(
       getProductsByMultyFilter(
@@ -41,6 +46,7 @@ function Filter({ show, name, data }) {
         GLOBAL_SORT_VALUE_STATE
       )
     );
+    dispatch(changeFilterCheckedState(DESKTOP_GLOBAL_FILTER_STATE));
     localStorage.setItem("desktop_filters", "active");
   };
 
@@ -83,13 +89,20 @@ function Filter({ show, name, data }) {
 
 const getFilterValue = (list) => {
   let value = [];
-  for (let i of list) {
-    if (i.checked === true) {
-      value.push(i.value);
+  let newList = [];
+  if (list) {
+    for (let i of list) {
+      newList.push({ name: i.defaultValue, isChecked: i.checked });
+      if (i.checked === true) {
+        value.push(i.value);
+      }
     }
   }
 
-  return value;
+  return {
+    value: value,
+    newList: newList,
+  };
 };
 
 export default Filter;
