@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import CheckSharpIcon from "@material-ui/icons/CheckSharp";
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import { useLocation } from "react-router-dom";
@@ -39,17 +37,6 @@ function ProductDetailsScreen() {
 
   const addToCartHandle = (item) => {
     dispatch(addToCart(item));
-  };
-
-  const currentQuantityMinusHandle = () => {
-    if (currentQuantity !== 1) {
-      setCurrentQuantity((currentQuantity -= 1));
-    }
-  };
-  const currentQuantityPlusHandle = () => {
-    if (product?.data?.countInStock !== currentQuantity) {
-      setCurrentQuantity((currentQuantity += 1));
-    }
   };
 
   const changeFooterBodyActiveState = () => {
@@ -173,14 +160,12 @@ function ProductDetailsScreen() {
               )}
             </div>
             <div className="qunatity">
-              {/* <RemoveIcon onClick={() => currentQuantityMinusHandle()} /> */}
               <input
                 type="number"
                 min="1"
                 defaultValue="1"
                 onChange={(e) => setCurrentQuantity(e.target.value)}
               />
-              {/* <AddIcon onClick={() => currentQuantityPlusHandle()} /> */}
             </div>
             <div
               className="buyBtn"

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import "./Navbar.scss";
 
 // Material Ui - Icons
@@ -16,7 +16,6 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getAllFilters,
   getAllProducts,
   getProductByName,
 } from "../../actions/productsActions";

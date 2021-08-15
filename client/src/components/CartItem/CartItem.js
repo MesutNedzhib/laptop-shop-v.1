@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import "./CartItem.scss";
 import CheckSharpIcon from "@material-ui/icons/CheckSharp";
 import CancelSharpIcon from "@material-ui/icons/CancelSharp";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import CurrencyFormat from "react-currency-format";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   changeCartItemQuantity,
   removeFromCartById,
 } from "../../actions/cartActions";
+import { useHistory } from "react-router-dom";
 import { GET_ALL_CART_ITEMS } from "../../constants/cartConstants";
 
 function CartItem({ cartItem }) {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const cartItemQuantityMinusHandle = () => {
     if (cartItem.quantity !== 1) {
@@ -46,8 +48,14 @@ function CartItem({ cartItem }) {
     <div className="cartItem">
       <div className="cartItem-container">
         <div className="cartItem-info">
-          <img src={cartItem.image} alt="" />
-          <p>{cartItem.name}</p>
+          <img
+            src={cartItem.image}
+            alt=""
+            onClick={() => history.push(`/product-details/${cartItem._id}`)}
+          />
+          <p onClick={() => history.push(`/product-details/${cartItem._id}`)}>
+            {cartItem.name}
+          </p>
           <ul>
             <li>
               <CheckSharpIcon className="icon" />{" "}

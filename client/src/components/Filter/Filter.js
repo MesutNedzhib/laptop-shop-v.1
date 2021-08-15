@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Filter.scss";
 import { useDispatch } from "react-redux";
 import {
   changeFilterCheckedState,
-  getAllProducts,
   getProductsByMultyFilter,
 } from "../../actions/productsActions";
 
@@ -20,8 +19,6 @@ function Filter({ show, name, data }) {
   if (Object.keys(DESKTOP_GLOBAL_FILTER_STATE).length === 0) {
     localStorage.removeItem("desktop_filters");
   }
-
-  let list = getFilterValue(document.getElementsByClassName(`${name}`)).newList;
 
   const getCheckboxValue = () => {
     const lowName = name?.toLowerCase();
@@ -54,8 +51,6 @@ function Filter({ show, name, data }) {
     if (DESKTOP_GLOBAL_FILTER_STATE[lowName]?.length === 0) {
       delete DESKTOP_GLOBAL_FILTER_STATE[lowName];
     }
-
-    localStorage.setItem("active-filters", JSON.stringify({ name: list }));
 
     dispatch(
       getProductsByMultyFilter(

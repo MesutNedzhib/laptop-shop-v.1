@@ -1,16 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./CartScreen.scss";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import CartItem from "../../components/CartItem/CartItem";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import CurrencyFormat from "react-currency-format";
-import MessageBox from "../../components/MessageBox/MessageBox";
-import { GET_ALL_CART_ITEMS } from "../../constants/cartConstants";
 
 function CartScreen() {
   const history = useHistory();
-  const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
 
   return (
