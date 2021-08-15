@@ -125,7 +125,7 @@ function ProductsScreen() {
                   onClick={() => changeFilterContentActiveState()}
                 />
               </div>
-              <div className="productOption-filters-container-body">
+              {/* <div className="productOption-filters-container-body">
                 {localStorage.getItem("mobile_filters") ? (
                   <div
                     className="filter-clear-btn"
@@ -170,7 +170,7 @@ function ProductsScreen() {
                     />
                   </>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
           {productsState?.loading ? (

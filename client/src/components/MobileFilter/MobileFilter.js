@@ -57,10 +57,10 @@ function MobileFilter({ show, name, data }) {
           <ul>
             {data?.map((item, index) => (
               <li key={index}>
-                <label htmlFor={item.name + "s"}>
+                <label htmlFor={item.name}>
                   <input
                     type="checkbox"
-                    id={item.name + "s"}
+                    id={item.name}
                     className={`${name}`}
                     onClick={() => getCheckboxValue()}
                   />
@@ -79,7 +79,8 @@ const getFilterValue = (list) => {
   let value = [];
   for (let i of list) {
     if (i.checked === true) {
-      value.push(i.id.substring(0, i.id.length - 1));
+      // value.push(i.id.substring(0, i.id.length - 1));
+      value.push(i.id);
     }
   }
 

@@ -57,9 +57,8 @@ export const productsFiltersReducer = (state = { filters: {} }, action) => {
     case GET_ALL_FILTERS_FAIL:
       return { loading: false, error: action.payload };
     case CHANGE_FILTER_CHECKED_STATE:
-      const toChange = action.payload;
-      console.log(toChange);
-      
+      return { loading: false, filters: action.payload };
+
     default:
       return state;
   }
