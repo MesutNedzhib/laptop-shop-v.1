@@ -5,6 +5,7 @@
   margin: auto;
   grid-template-columns: 200px 890px;
   grid-column-gap: 10px;
+  margin-bottom: 20px;
 
   @media (max-width: 1024px) {
     padding-top: 75px;
