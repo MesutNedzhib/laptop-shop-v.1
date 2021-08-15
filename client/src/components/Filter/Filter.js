@@ -25,21 +25,23 @@ function Filter({ show, name, data }) {
 
   const getCheckboxValue = () => {
     const lowName = name?.toLowerCase();
-    let gg = {};
+    let newFilterState = {};
 
-    gg.brand = getFilterValue(document.getElementsByClassName("BRAND")).newList;
-    gg.processor = getFilterValue(
+    newFilterState.brand = getFilterValue(
+      document.getElementsByClassName("BRAND")
+    ).newList;
+    newFilterState.processor = getFilterValue(
       document.getElementsByClassName("PROCESSOR")
     ).newList;
-    gg.memory = getFilterValue(
+    newFilterState.memory = getFilterValue(
       document.getElementsByClassName("MEMORY")
     ).newList;
-    gg.storage = getFilterValue(
+    newFilterState.storage = getFilterValue(
       document.getElementsByClassName("STORAGE")
     ).newList;
-    gg.video = getFilterValue(document.getElementsByClassName("VIDEO")).newList;
-
-    dispatch(changeFilterCheckedState({ data: gg }));
+    newFilterState.video = getFilterValue(
+      document.getElementsByClassName("VIDEO")
+    ).newList;
 
     if (localStorage.getItem("sort")) {
       GLOBAL_SORT_VALUE_STATE = localStorage.getItem("sort");
@@ -61,7 +63,7 @@ function Filter({ show, name, data }) {
         GLOBAL_SORT_VALUE_STATE
       )
     );
-
+    dispatch(changeFilterCheckedState({ data: newFilterState }));
     localStorage.setItem("desktop_filters", "active");
   };
 
