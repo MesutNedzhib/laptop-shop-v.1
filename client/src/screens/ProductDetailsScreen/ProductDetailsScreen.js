@@ -56,7 +56,7 @@ function ProductDetailsScreen() {
         <div className="productDetailsScreen-body">
           <div className="productDetailsScreen-body-basic-info">
             <>
-              <div>
+              <div className="container">
                 <Carousel
                   id="carousel"
                   showStatus={false}
@@ -72,7 +72,7 @@ function ProductDetailsScreen() {
                   ))}
                 </Carousel>
               </div>
-              <div>
+              <div className="container">
                 <Carousel
                   showStatus={false}
                   showArrows={false}
@@ -88,7 +88,7 @@ function ProductDetailsScreen() {
                   ))}
                 </Carousel>
               </div>
-              <div>
+              <div className="container">
                 <Carousel
                   id="carousel"
                   showStatus={false}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.scss";
 
 // Material Ui - Icons
@@ -13,7 +13,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllProducts,
@@ -22,6 +22,9 @@ import {
 
 function Navbar() {
   const history = useHistory();
+  const location = useLocation();
+  let currentLocation = location.pathname.split("/")[1];
+
   const dispatch = useDispatch();
 
   const { cartItems } = useSelector((state) => state.cart);
@@ -29,6 +32,12 @@ function Navbar() {
   const [menuContentActive, setMenuContentActive] = useState(false);
   const [menuContentAccountActive, setMenuContentAccountActive] =
     useState(false);
+
+  useEffect(() => {
+    if (currentLocation !== "") {
+      setMenuContentActive(false);
+    }
+  }, [currentLocation]);
 
   const changeMenuContentActiveState = () => {
     setMenuContentActive(!menuContentActive);
