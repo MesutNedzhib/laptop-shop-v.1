@@ -36,6 +36,8 @@ function Navbar() {
   useEffect(() => {
     if (currentLocation !== "") {
       setMenuContentActive(false);
+    } else {
+      setMenuContentActive(false);
     }
   }, [currentLocation]);
 
