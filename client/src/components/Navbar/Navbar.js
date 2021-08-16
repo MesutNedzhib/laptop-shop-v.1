@@ -118,8 +118,12 @@ function Navbar() {
         <div onClick={() => history.push("/")} className="navbar-center-side">
           {/* <div className="gif-container"></div> */}
           {/* LAPTOP SHOP */}
-          <img src="./logo-origin.png" alt="" style={{ width: "38px" }} />
-          SHOP
+          <div>
+            <img src="./logo-origin.png" alt="" style={{ width: "38px" }} />
+          </div>
+          <div>
+            <span>SHOP</span>
+          </div>
         </div>
 
         <div className="navbar-right-side">

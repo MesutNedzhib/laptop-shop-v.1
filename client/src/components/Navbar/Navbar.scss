@@ -16,7 +16,8 @@
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
   margin: auto;
-  padding: 10px 0;
+  padding-top: 8px;
+  padding-bottom: 4px;
   top: 0;
   z-index: 99;
   max-width: 1125px;
@@ -157,6 +158,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: "Mada", sans-serif;
+  font-size: 20px;
+
+  span {
+    margin-left: 5px;
+  }
 
   .gif-container {
     background-image: url("https://i.pinimg.com/originals/49/47/17/494717317adbf7ce15dd09223f31a9dc.gif");
