@@ -120,7 +120,16 @@ function MobileProductScreen() {
           {productsState?.loading ? (
             <LoadingBox />
           ) : productsState?.error ? (
-            <MessageBox message={productsState?.error} variant={"error"} />
+            <div
+              className="messagebox-container"
+              style={{
+                height: "100vh",
+
+                paddingTop: "50px",
+              }}
+            >
+              <MessageBox message={productsState?.error} variant={"error"} />
+            </div>
           ) : (
             <div className="productCards-container">
               {productsState?.products?.data?.map((item, index) => (
