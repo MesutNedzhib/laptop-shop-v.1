@@ -24,8 +24,17 @@
 }
 .navbar-left-side {
   position: relative;
+  display: flex;
+  align-items: center;
+
+  #loyalty-icon {
+    display: block;
+    margin-left: 10px;
+  }
   span {
     cursor: pointer;
+    // font-family: "Secular One", sans-serif !important;
+    font-weight: 600;
   }
   svg {
     color: white;
@@ -42,13 +51,15 @@
 
     svg {
       display: block;
+      margin-right: auto;
     }
   }
 
   .menu-content {
     position: fixed;
     overflow: hidden;
-    margin-top: 10px;
+
+    top: 50px;
     color: black;
     width: 0;
     height: 100vh;

@@ -12,6 +12,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import CloseIcon from "@material-ui/icons/Close";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import LoyaltyIcon from "@material-ui/icons/Loyalty";
 
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -65,6 +66,12 @@ function Navbar() {
       <div className="navbar-container">
         <div className="navbar-left-side">
           <span onClick={() => history.push("/products")}>PRODUCTS</span>
+          <span>
+            <LoyaltyIcon
+              id="loyalty-icon"
+              onClick={() => history.push("/products")}
+            />
+          </span>
           {menuContentActive ? (
             <CloseIcon onClick={() => changeMenuContentActiveState()} />
           ) : (
@@ -81,7 +88,7 @@ function Navbar() {
               >
                 <div className="menu-content-account-header">
                   <AccountCircleIcon />
-                  <h4>John Conner</h4>
+                  <h4>Username</h4>
                 </div>
                 {menuContentAccountActive ? (
                   <ExpandLessIcon />
@@ -110,7 +117,9 @@ function Navbar() {
         </div>
         <div onClick={() => history.push("/")} className="navbar-center-side">
           {/* <div className="gif-container"></div> */}
-          LAPTOP SHOP
+          {/* LAPTOP SHOP */}
+          <img src="./logo-origin.png" alt="" style={{ width: "38px" }} />
+          SHOP
         </div>
 
         <div className="navbar-right-side">
