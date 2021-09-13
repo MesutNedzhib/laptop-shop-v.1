@@ -12,6 +12,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import CloseIcon from "@material-ui/icons/Close";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import HomeIcon from "@material-ui/icons/Home";
 
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -65,7 +66,7 @@ function Navbar() {
       <div className="navbar-container">
         <div className="navbar-left-side">
           <span onClick={() => history.push("/")}>E-LMAG</span>
-          <span onClick={() => history.push("/products")}>SHOP</span>
+          <span onClick={() => history.push("/products")}>PRODUCTS</span>
           {menuContentActive ? (
             <CloseIcon onClick={() => changeMenuContentActiveState()} />
           ) : (
@@ -97,6 +98,14 @@ function Navbar() {
               >
                 <h4>Login</h4>
                 <h4>Logout</h4>
+              </div>
+              <div
+                onClick={() => history.push("/")}
+                className="menu-content-row"
+              >
+                <HomeIcon />
+                <h4>Home</h4>
+                <ChevronRightIcon />
               </div>
               <div
                 onClick={() => history.push("/products")}

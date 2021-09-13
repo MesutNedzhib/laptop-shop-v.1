@@ -169,6 +169,11 @@
   margin-left: auto;
   margin-right: 15px;
 
+  @media (max-width: 480px) {
+    // display: none;
+    margin-right: 0px;
+  }
+
   .navbar-search {
     display: flex;
     align-items: center;

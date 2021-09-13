@@ -44,7 +44,7 @@
     ul {
       overflow-y: auto;
       overflow-x: hidden;
-      max-height: 235px;
+      max-height: 215px;
 
       &::-webkit-scrollbar {
         width: 8px;
@@ -55,6 +55,9 @@
       }
     }
     height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
 
     transition: 0.3s;
   }
