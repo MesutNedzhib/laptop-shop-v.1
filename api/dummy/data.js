@@ -38,24 +38,6 @@ const data = {
     },
     {
       images: [
-        "https://laptop.bg/system/images/269508/normal/Spin_3_SP314_21.jpg",
-        "https://laptop.bg/system/images/269500/normal/Spin_3_SP314_21.jpg",
-        "https://laptop.bg/system/images/269501/normal/Spin_3_SP314_21.jpg",
-        "https://laptop.bg/system/images/269503/normal/Spin_3_SP314_21.jpg",
-        "https://laptop.bg/system/images/269499/normal/Spin_3_SP314_21.jpg",
-      ],
-      name: "Acer Spin 3 (SP314-21N)",
-      processor: "AMD Ryzen 3",
-      processorModel: "AMD Ryzen 3-3250U",
-      memory: "8 GB DDR4",
-      video: "AMD Radeon Vega 3 Graphics",
-      storage: "128 GB SSD",
-      price: 1299.99,
-      countInStock: 10,
-      brand: "Acer",
-    },
-    {
-      images: [
         "https://laptop.bg/system/images/248254/normal/ROG_STRIX_G15_G512.jpg",
         "https://laptop.bg/system/images/248257/normal/ROG_STRIX_G15_G512.jpg",
         "https://laptop.bg/system/images/248256/normal/ROG_STRIX_G15_G512.jpg",
