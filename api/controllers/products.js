@@ -64,40 +64,15 @@ const getSingleProduct = expressAsyncHandler(async (req, res, next) => {
   res.status(200).json(res.queryResults);
 });
 
-const getProductByName = expressAsyncHandler(async (req, res, next) => {
-  const products = await Product.find({});
-
-  let findedProduct = products.filter(
-    (item) =>
-      item.name.toLowerCase().indexOf(req.body.value.toLowerCase()) !== -1
-  );
-
-  if (findedProduct.length !== 0) {
-    res.status(200).json({
-      success: true,
-      message: "GET PRODUCT BY NAME",
-      data: findedProduct,
-    });
-  } else {
-    res.status(404).json({
-      success: true,
-      message: `GET PRODUCT BY NAME - NOT FOUND!`,
-    });
-  }
-});
-
 const getProductsByMultyFilter = expressAsyncHandler(async (req, res, next) => {
   const { model } = req.body;
 
   const products = await Product.find(model);
 
-  if (products.length !== 0) {
-    res.status(200).json({
-      success: true,
-      message: `FINDED PRODUCTS`,
-      data: products,
-    });
-  }
+  res.status(200).json({
+    success: true,
+    data: products,
+  });
 });
 
 module.exports = {
@@ -105,6 +80,5 @@ module.exports = {
   getAllProducts,
   getAllFilters,
   getSingleProduct,
-  getProductByName,
   getProductsByMultyFilter,
 };
