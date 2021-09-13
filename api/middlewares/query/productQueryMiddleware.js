@@ -4,6 +4,11 @@ const productQueryMiddleware = function (model) {
   return expressAsyncHandler(async function (req, res, next) {
     let query = model.find();
 
+    // Serach by id
+    if (req.params.id) {
+      query = model.findById(req.params.id);
+    }
+
     // Search by name
     if (req.query.search) {
       const searchObject = {};
@@ -37,6 +42,9 @@ const productQueryMiddleware = function (model) {
       };
     }
 
+    pagination.startIndex = startIndex;
+    pagination.limit = limit;
+
     query =
       query === undefined ? undefined : query.skip(startIndex).limit(limit);
 
@@ -45,7 +53,7 @@ const productQueryMiddleware = function (model) {
     res.queryResults = {
       success: true,
       count: queryResults.length,
-      pagination: pagination,
+      pagination: queryResults.length >= 5 ? pagination : undefined,
       data: queryResults,
     };
     next();

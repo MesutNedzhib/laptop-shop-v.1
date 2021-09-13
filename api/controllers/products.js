@@ -58,15 +58,8 @@ const getAllFilters = expressAsyncHandler(async (req, res) => {
   });
 });
 
-const getProductById = expressAsyncHandler(async (req, res) => {
-  const { _id } = req.body;
-  const product = await Product.findById(_id);
-
-  res.status(200).json({
-    success: true,
-    message: "GET PRODUCT BY ID",
-    data: product,
-  });
+const getSingleProduct = expressAsyncHandler(async (req, res) => {
+  res.status(200).json(res.queryResults);
 });
 
 const getProductByName = expressAsyncHandler(async (req, res, next) => {
@@ -114,7 +107,7 @@ module.exports = {
   insertManyProductsToMongo,
   getAllProducts,
   getAllFilters,
-  getProductById,
+  getSingleProduct,
   getProductByName,
   getProductsByMultyFilter,
 };
