@@ -13,9 +13,10 @@ const productQueryMiddleware = require("../middlewares/query/productQueryMiddlew
 const router = express.Router();
 
 router.get("/insert-many", insertManyProductsToMongo);
-router.get("/", productQueryMiddleware(Product), getAllProducts);
 router.get("/get-all-filters", getAllFilters);
+router.get("/", productQueryMiddleware(Product), getAllProducts);
 router.get("/:id", productQueryMiddleware(Product), getSingleProduct);
+
 router.post("/get-product-by-name", getProductByName);
 router.post("/get-products-by-multy-filter", getProductsByMultyFilter);
 module.exports = router;

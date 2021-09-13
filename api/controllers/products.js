@@ -4,13 +4,15 @@ const Product = require("../models/ProductModel");
 const data = require("../data.js");
 const countDublicatedItems = require("../helpers/products/countDublicatedItems");
 
-const insertManyProductsToMongo = expressAsyncHandler(async (req, res) => {
-  const insertedProducts = await Product.insertMany(data.products);
-  res.status(200).json({
-    message: "success",
-    data: insertedProducts,
-  });
-});
+const insertManyProductsToMongo = expressAsyncHandler(
+  async (req, res, next) => {
+    const insertedProducts = await Product.insertMany(data.products);
+    res.status(200).json({
+      message: "success",
+      data: insertedProducts,
+    });
+  }
+);
 
 const getAllProducts = expressAsyncHandler(async (req, res, next) => {
   if (res.queryResults.data.length === 0) {
@@ -20,7 +22,7 @@ const getAllProducts = expressAsyncHandler(async (req, res, next) => {
 });
 
 const getAllFilters = expressAsyncHandler(async (req, res) => {
-  const products = await Product.find({});
+  const products = await Product.find();
   const filters = {};
   filters.brand = countDublicatedItems(
     products.map((item) => {
@@ -58,7 +60,7 @@ const getAllFilters = expressAsyncHandler(async (req, res) => {
   });
 });
 
-const getSingleProduct = expressAsyncHandler(async (req, res) => {
+const getSingleProduct = expressAsyncHandler(async (req, res, next) => {
   res.status(200).json(res.queryResults);
 });
 
@@ -94,11 +96,6 @@ const getProductsByMultyFilter = expressAsyncHandler(async (req, res, next) => {
       success: true,
       message: `FINDED PRODUCTS`,
       data: products,
-    });
-  } else {
-    res.status(404).json({
-      success: true,
-      message: `NOT FOUND`,
     });
   }
 });

@@ -17,11 +17,16 @@
   grid-template-columns: 1fr 1fr 1fr;
   margin: auto;
   padding-top: 8px;
-  padding-bottom: 4px;
+  padding-bottom: 8px;
   top: 0;
   z-index: 99;
   max-width: 1125px;
-  color: white; //
+  color: white;
+
+  @media (max-width: 480px) {
+    padding-top: 13px;
+    padding-bottom: 11px;
+  }
 }
 .navbar-left-side {
   position: relative;
@@ -36,6 +41,8 @@
     cursor: pointer;
     // font-family: "Secular One", sans-serif !important;
     font-weight: 600;
+
+    margin-left: 15px;
   }
   svg {
     color: white;
@@ -153,31 +160,14 @@
   }
 }
 .navbar-center-side {
-  text-align: center;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Mada", sans-serif;
-  font-size: 20px;
-
-  span {
-    margin-left: 5px;
-  }
-
-  .gif-container {
-    background-image: url("https://i.pinimg.com/originals/49/47/17/494717317adbf7ce15dd09223f31a9dc.gif");
-    width: 20px;
-    height: 20px;
-    background-position: center;
-    background-size: cover;
-  }
+  // Center Side Future
 }
 
 .navbar-right-side {
   display: flex;
   align-items: center;
   margin-left: auto;
+  margin-right: 15px;
 
   .navbar-search {
     display: flex;

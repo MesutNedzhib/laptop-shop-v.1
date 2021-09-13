@@ -8,7 +8,7 @@
   box-shadow: 0 1px 5px #e5e5e5;
   // margin-bottom: 10px;
   margin-right: 10px;
-  border-radius: 10px;
+  border-radius: 3px;
   transition: 0.4s;
 
   &:hover {
@@ -83,8 +83,8 @@
   justify-content: space-between;
   background-color: #4e88cf;
   background-color: #18293ce8;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
   color: #ffffff;
 
   .productCard-price {

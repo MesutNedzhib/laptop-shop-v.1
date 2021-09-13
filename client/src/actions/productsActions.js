@@ -24,7 +24,7 @@ export const getAllProducts = () => async (dispatch, getState) => {
     type: GET_ALL_PRODUCTS_REQUEST,
   });
   try {
-    const { data } = await axios.get("/api/products/get-all-products");
+    const { data } = await axios.get("/api/products/");
     dispatch({
       type: GET_ALL_PRODUCTS_SUCCESS,
       payload: data,
@@ -64,9 +64,7 @@ export const getProductById = (_id) => async (dispatch) => {
     type: GET_PRODUCT_BY_ID_REQUEST,
   });
   try {
-    const { data } = await axios.post("/api/products/get-product-by-id", {
-      _id,
-    });
+    const { data } = await axios.get(`/api/products/${_id}`);
     dispatch({
       type: GET_PRODUCT_BY_ID_SUCCESS,
       payload: data,
@@ -83,11 +81,8 @@ export const getProductByName = (value) => async (dispatch) => {
   dispatch({
     type: GET_PRODUCT_BY_NAME_REQUEST,
   });
-
   try {
-    const { data } = await axios.post(`/api/products/get-product-by-name`, {
-      value,
-    });
+    const { data } = await axios.get(`/api/products?search=${value}`);
 
     dispatch({
       type: GET_PRODUCT_BY_NAME_SUCCESS,

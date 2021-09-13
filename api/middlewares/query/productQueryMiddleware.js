@@ -19,8 +19,8 @@ const productQueryMiddleware = function (model) {
     }
 
     // Pagination
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 5;
+    const page = parseInt(req.query.page) || 1; // default value
+    const limit = parseInt(req.query.limit) || 15; // default value
 
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
