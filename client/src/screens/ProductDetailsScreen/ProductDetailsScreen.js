@@ -11,15 +11,18 @@ import { getProductById } from "../../actions/productsActions";
 import LoadingBox from "../../components/LoadingBox/LoadingBox";
 import MessageBox from "../../components/MessageBox/MessageBox";
 import { addToCart } from "../../actions/cartActions";
+
 function ProductDetailsScreen() {
   const location = useLocation();
+  const productId = location.pathname.split("/")[2];
+
   const dispatch = useDispatch();
 
-  const productId = location.pathname.split("/")[2];
   const { loading, error, product } = useSelector(
     (state) => state.productDetails
   );
 
+  // Default Array with Random Product images for Ads
   let images = [
     "https://laptop.bg/system/images/248254/normal/ROG_STRIX_G15_G512.jpg",
     "https://laptop.bg/system/images/248257/normal/ROG_STRIX_G15_G512.jpg",

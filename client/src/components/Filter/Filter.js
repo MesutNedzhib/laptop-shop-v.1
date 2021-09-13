@@ -58,6 +58,7 @@ function Filter({ show, name, data }) {
         GLOBAL_SORT_VALUE_STATE
       )
     );
+    
     dispatch(changeFilterCheckedState({ data: newFilterState }));
     localStorage.setItem("desktop_filters", "active");
   };

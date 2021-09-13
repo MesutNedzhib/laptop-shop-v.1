@@ -4,6 +4,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 
 function LargeImageSlider() {
+
+  // default array with random banners
   const asusBanners_L = [
     "https://www.digitaldreamsjaipur.com/wp-content/uploads/2020/05/ASUS-Gamimg-Laptop__Section-Banner.jpg",
     "https://i.pinimg.com/originals/76/2b/a2/762ba2bf06f1b06afe05db59024a6990.jpg",

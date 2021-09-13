@@ -23,7 +23,9 @@ function ProductCard({ product }) {
           />
         </div>
         <div className="productCard-body">
-          <p>{product.name}</p>
+          <p onClick={() => history.push(`/product-details/${product._id}`)}>
+            {product.name}
+          </p>
           <ul>
             <li>
               <CheckSharpIcon className="icon" />{" "}

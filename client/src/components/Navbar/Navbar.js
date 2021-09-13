@@ -42,6 +42,8 @@ function Navbar() {
     }
   }, [currentLocation]);
 
+  console.log("HI");
+
   const changeMenuContentActiveState = () => {
     setMenuContentActive(!menuContentActive);
   };
