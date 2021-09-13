@@ -1,4 +1,5 @@
 const expressAsyncHandler = require("express-async-handler");
+const CustomError = require("../helpers/error/CustomError");
 const Product = require("../models/ProductModel");
 const data = require("../data.js");
 const countDublicatedItems = require("../helpers/products/countDublicatedItems");
@@ -11,14 +12,11 @@ const insertManyProductsToMongo = expressAsyncHandler(async (req, res) => {
   });
 });
 
-const getAllProducts = expressAsyncHandler(async (req, res) => {
-  const products = await Product.find({});
-
-  res.status(200).json({
-    success: true,
-    message: "ALL PRODUCTS",
-    data: products,
-  });
+const getAllProducts = expressAsyncHandler(async (req, res, next) => {
+  if (res.queryResults.data.length === 0) {
+    return next(new CustomError("Not found a product", 400));
+  }
+  res.status(200).json(res.queryResults);
 });
 
 const getAllFilters = expressAsyncHandler(async (req, res) => {

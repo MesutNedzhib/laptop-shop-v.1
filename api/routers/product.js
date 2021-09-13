@@ -1,4 +1,5 @@
 const express = require("express");
+const Product = require("../models/ProductModel");
 const {
   insertManyProductsToMongo,
   getAllProducts,
@@ -7,11 +8,12 @@ const {
   getProductByName,
   getProductsByMultyFilter,
 } = require("../controllers/products");
+const productQueryMiddleware = require("../middlewares/query/productQueryMiddleware");
 
 const router = express.Router();
 
 router.get("/insert-many", insertManyProductsToMongo);
-router.get("/get-all-products", getAllProducts);
+router.get("/", productQueryMiddleware(Product), getAllProducts);
 router.get("/get-all-filters", getAllFilters);
 router.post("/get-product-by-id", getProductById);
 router.post("/get-product-by-name", getProductByName);
