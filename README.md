@@ -112,7 +112,7 @@ v.1 - Demo
 
 ## How to run 
 1. Download.
-2. Open the folder in the CLI and go to first **api** direcory using command `cd api`.
+2. Open the folder in the CLI and go to **api** direcory using command `cd api`.
 3. Run the following commands for the **api** directory:
    - `npm install`
    - `npm run import`
