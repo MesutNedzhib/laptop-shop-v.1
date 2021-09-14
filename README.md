@@ -1,7 +1,6 @@
 # Laptop Shop E-LMAG
 Laptop Store E -LMAG - is a web application built in the form of an online store where consumers can browse and buy products.
 
-
 ![view-image-1](https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/view-1.png)
 
 ### Mobile
@@ -63,10 +62,6 @@ style="margin-right: 10px"
      width=130
 />
 </p>
-
-
-
-
 
 ### Desktop
 <p align="center">
@@ -148,7 +143,9 @@ v.1 - Demo
    - Add item to cart
    - Remove item from cart
    - Change cart item quantity
-   -
+   - Seacrh item/s
+   - Sort items
+   - Filter items
    
 ## Future Features
 - Creation of authorization functions
