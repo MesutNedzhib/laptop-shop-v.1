@@ -1,7 +1,7 @@
-# Laptop Shop - E-LMAG
-The Question - Answer is a REST Api, created similar to stackoverflow, like idea, where users can ask any questions and write answers.
+# Laptop Shop E-LMAG
+Laptop Store E -LMAG - is a web application built in the form of an online store where consumers can browse and buy products.
 
-![test image](https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/view-1.png)
+![view-image-1](https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/view-1.png)
 
 ## How to run 
 1. Download.
@@ -31,7 +31,10 @@ The Question - Answer is a REST Api, created similar to stackoverflow, like idea
    -
    
 ## Future Features
-- Hide the questions or answers of blocked user
+- Creation of authorization functions
+- Creation of admin functionalities and dashboard
+- Creation of checkout screen 
+- Implement a stripe 
 - etc ...
 
 ## Dependencies
