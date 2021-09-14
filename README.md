@@ -7,7 +7,7 @@ Laptop Store E -LMAG - is a web application built in the form of an online store
 src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/desktop-view%20(3).png"
 raw=true
 alt="Subject Pronouns"
-style="margin-right: 10px;"
+style="margin-right: 10px, height:80px, width: 120px"
 />
 
 ## How to run 
