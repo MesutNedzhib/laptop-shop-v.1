@@ -5,14 +5,6 @@ Laptop Shop E-LMAG - is a web application built in the form of an online store w
 
 ### Mobile
 <p align="center">
-     <img
-src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/mobile-view%20(2).png"
-raw=true
-alt="Subject Pronouns"
-style="margin-right: 20px;"
-     height=280
-     width=130
-/>
 <img
 src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/mobile-view%20(1).png"
 raw=true
