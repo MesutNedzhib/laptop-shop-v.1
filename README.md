@@ -3,6 +3,13 @@ Laptop Store E -LMAG - is a web application built in the form of an online store
 
 ![view-image-1](https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/view-1.png)
 
+<img
+src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/desktop-view%20(3).png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px;"
+/>
+
 ## How to run 
 1. Download.
 2. Open the folder in the CLI and go to first **api** direcory using command `cd api`.
