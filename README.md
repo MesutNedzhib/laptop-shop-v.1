@@ -1,16 +1,127 @@
 # Laptop Shop E-LMAG
 Laptop Store E -LMAG - is a web application built in the form of an online store where consumers can browse and buy products.
 
+
 ![view-image-1](https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/view-1.png)
 
+### Mobile
+<p align="center">
+     <img
+src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/mobile-view%20(2).png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 20px;"
+     height=280
+     width=130
+/>
+<img
+src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/mobile-view%20(1).png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px"
+      height=280
+     width=130
+/>
+<img
+src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/mobile-view%20(5).png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px"
+     height=280
+     width=130
+/>
+<img
+src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/mobile-view%20(7).png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px"
+     height=280
+     width=130
+/>
+<img
+src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/mobile-view%20(3).png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px"
+      height=280
+     width=130
+/>
+<img
+src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/mobile-view%20(6).png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px"
+     height=280
+     width=130
+/>
+<img
+src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/mobile-view%20(4).png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px"
+     height=280
+     width=130
+/>
+</p>
+
+
+
+
+
+### Desktop
+<p align="center">
+  <img
+src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/desktop-view%20(6).png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px"
+     height=190
+     width=300
+/>
 <img
 src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/desktop-view%20(3).png"
 raw=true
 alt="Subject Pronouns"
 style="margin-right: 10px"
-     height=80
-     width=100
+     height=190
+     width=300
 />
+<img
+src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/desktop-view%20(5).png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px"
+     height=190
+     width=300
+/>   
+       <img
+src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/desktop-view%20(2).png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px"
+     height=190
+     width=300
+/>
+<img
+src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/desktop-view%20(1).png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px"
+     height=190
+     width=300
+/>
+<img
+src="https://github.com/MesutNedzhib/laptop-shop-v.1/blob/main/client/public/png/desktop-view%20(4).png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px"
+     height=190
+     width=300
+/>  
+</p>
+
+v.1 - Demo
+
 
 ## How to run 
 1. Download.
