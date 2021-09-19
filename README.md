@@ -124,20 +124,13 @@ v.1 - Demo
 6. Enjoy :)
 
 ## Features
-1. Api
+The application is based on the three-tier architecture of the MERN stack, which consists of a client side, a server side, and a database. The MERN stack consists of MongoDB, Express JS, React JS and Node JS. The application has the following functionalities:
    - Get all products
      - Search by name
      - Pagiantion
    - Get single product
      - Search by id
    - Get products by multiple conditions filter
-2. Client
-   - Add item to cart
-   - Remove item from cart
-   - Change cart item quantity
-   - Seacrh item/s
-   - Sort items
-   - Filter items
    
 ## Future Features
 - Creation of authorization functions
